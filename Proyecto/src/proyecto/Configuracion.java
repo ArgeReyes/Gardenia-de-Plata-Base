@@ -42,7 +42,7 @@ public class Configuracion extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
-        getContentPane().add(tela, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, 360));
+        getContentPane().add(tela, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 360));
 
         jButton1.setText("Nuevo Usuario");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,13 +65,13 @@ public class Configuracion extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 24, 180, 100));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 210, 70, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Corinto.jpg"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 570, 360));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
