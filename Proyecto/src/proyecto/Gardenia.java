@@ -3,6 +3,7 @@ package proyecto;
 public class Gardenia {
 
     public static void main(String[] args) {
+        
         daoProducto dao;
         Producto p;
         dao = new daoProducto();
