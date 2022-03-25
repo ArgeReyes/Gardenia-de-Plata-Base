@@ -10,7 +10,7 @@ public class daoProducto {
         c = new Conexion();
     }
     
-    public boolean create(Producto p){
+    public boolean create(EntidadProducto p){
         try {
             String sql = "INSERT INTO producto (ID, nombre, consignacion, existencia, material, fechaIngreso, costo, peso) values (?,?,?,?,?,?,?,?)";
             PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
