@@ -6,7 +6,7 @@ public class Gardenia {
         daoProducto dao;
         Producto p;
         dao = new daoProducto();
-        p = new Producto(1, "JOYA", true, 35, "Obsidiana", "2022-03-24", 12, 25);
+        p = new Producto(2, "RUBY", true, 35, "Sus mentiras", "2022-03-25", 12, 55);
         if (dao.create(p)) {
             System.out.println("Se creó correctamente");
         } else {

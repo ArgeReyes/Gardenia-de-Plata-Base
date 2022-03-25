@@ -10,7 +10,7 @@ public class Conexion {
     String bd = "gardenia";
     String url = "jdbc:mysql://localhost:3306/" + bd;
     String user = "root";
-    String pass = "bbbbbbb7";
+    String pass = "bbbbbbb7"; //cambiar la contraseña
 
     public Connection conectar() {
         try {
