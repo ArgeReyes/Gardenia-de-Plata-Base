@@ -29,7 +29,6 @@ public class Conexion1 {
         try
         {
             Class.forName("org.gjt.mm.mysql.Driver");
-            
             con =  DriverManager.getConnection(url, user, pass);
             
         }

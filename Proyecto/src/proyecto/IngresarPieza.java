@@ -1,8 +1,8 @@
 package proyecto;
 
+import javax.swing.JOptionPane;
 
 public class IngresarPieza extends javax.swing.JFrame {
-    int id = 0;
     /**
      * Creates new form IngresarPieza
      */
@@ -111,6 +111,11 @@ public class IngresarPieza extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, -1, -1));
 
         jToggleButton1.setText("Regresar");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseClicked(evt);
+            }
+        });
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -152,21 +157,34 @@ public class IngresarPieza extends javax.swing.JFrame {
         daoProducto dao;
         EntidadProducto p;
         dao = new daoProducto();
-        
+
         String nombre = textNombre.getText();
         String material = textMaterial.getText();
         float costo = Float.valueOf(textCosto.getText());
         float peso = Float.valueOf(textPeso.getText());
-        
-        p = new EntidadProducto(id, nombre, false, 0, material, null, costo, peso);
+
+        p = new EntidadProducto(0, nombre, false, 0, material, null, costo, peso);
         if (dao.create(p)) {
-            System.out.println("Se creó correctamente");
+            JOptionPane.showMessageDialog(this, "Se insertó el producto exitosamente");
         } else {
-            System.out.println("error");
+            JOptionPane.showMessageDialog(this, "No se insertó registro");
         }
-        id++;
+        
+        limpiarCampos();
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+        // TODO add your handling code here:
+        new Inventario().setVisible(true);
+    }//GEN-LAST:event_jToggleButton1MouseClicked
+
+    public void limpiarCampos(){
+        textNombre.setText("");
+        textMaterial.setText("");
+        textCosto.setText("");
+        textPeso.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
