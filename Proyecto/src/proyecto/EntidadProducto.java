@@ -1,6 +1,6 @@
 package proyecto;
 
-public class Producto {
+public class EntidadProducto {
 
     int ID;
     String nombre;
@@ -11,11 +11,11 @@ public class Producto {
     float costo;
     float peso;
     
-    public Producto(){
+    public EntidadProducto(){
         System.out.println("Se creó un producto");
     }
 
-    public Producto(int ID, String nombre, boolean consignacion, int existencia, String material, String fechaIngreso, float costo, float peso) {
+    public EntidadProducto(int ID, String nombre, boolean consignacion, int existencia, String material, String fechaIngreso, float costo, float peso) {
         this.ID = ID;
         this.nombre = nombre;
         this.consignacion = consignacion;
