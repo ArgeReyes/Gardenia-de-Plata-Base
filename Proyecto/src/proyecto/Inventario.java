@@ -95,6 +95,11 @@ public class Inventario extends javax.swing.JFrame {
         getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 140, -1));
 
         jButton5.setText("Regresar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
 
         Tabla1.setModel(new javax.swing.table.DefaultTableModel(
@@ -153,6 +158,12 @@ public class Inventario extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new Principal().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

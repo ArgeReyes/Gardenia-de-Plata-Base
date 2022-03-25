@@ -156,6 +156,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         new Inventario().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -169,7 +170,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         new vendedoresRegistro().setVisible(true);
-       
+       this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

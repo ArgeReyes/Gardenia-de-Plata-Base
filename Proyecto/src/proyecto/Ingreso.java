@@ -114,7 +114,7 @@ public class Ingreso extends javax.swing.JFrame {
         if("Admin".equals(usuario.getText()) &&  "12345".equals(pass)){
            
             new Principal().setVisible(true);
-             new Ingreso().setVisible(false);
+           this.setVisible(false);
             
         } else{
           JOptionPane.showMessageDialog(null,"no se puede ingresar" );

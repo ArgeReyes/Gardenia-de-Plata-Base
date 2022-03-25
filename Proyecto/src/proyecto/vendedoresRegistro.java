@@ -35,6 +35,7 @@ public class vendedoresRegistro extends javax.swing.JFrame {
         txt_Telefono = new javax.swing.JTextField();
         Guardar = new javax.swing.JButton();
         Buscar = new javax.swing.JButton();
+        Regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,11 +59,18 @@ public class vendedoresRegistro extends javax.swing.JFrame {
             }
         });
 
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
@@ -78,7 +86,9 @@ public class vendedoresRegistro extends javax.swing.JFrame {
                     .addComponent(txt_Nombre)
                     .addComponent(txt_Telefono))
                 .addGap(45, 45, 45)
-                .addComponent(Buscar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Buscar)
+                    .addComponent(Regresar))
                 .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
@@ -100,7 +110,9 @@ public class vendedoresRegistro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
                     .addComponent(Buscar))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(Regresar)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,8 +131,15 @@ public class vendedoresRegistro extends javax.swing.JFrame {
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
         new Inventario().setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
+        // TODO add your handling code here:
+        new Principal().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_RegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +179,7 @@ public class vendedoresRegistro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
     private javax.swing.JButton Guardar;
+    private javax.swing.JButton Regresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
