@@ -48,6 +48,9 @@ public class EntidadUsuario {
     public void setTipo(boolean tipo) {
         this.tipo = tipo;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "EntidadUsuario{" + "ID=" + ID + ", nombre=" + nombre + ", contrase\u00f1a=" + contraseña + ", tipo=" + tipo + '}';
+    }
 }

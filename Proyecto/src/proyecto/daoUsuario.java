@@ -1,6 +1,7 @@
 package proyecto;
 
 import com.mysql.jdbc.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class daoUsuario {
@@ -27,5 +28,27 @@ public class daoUsuario {
             System.out.println("Error al crear el usuario: " + ex);
             return false;
         }
+    }
+    
+    public EntidadUsuario read(String nombre) {
+        EntidadUsuario u = new EntidadUsuario();
+        try {
+            String sql = "SELECT * FROM  usuario WHERE nombre=?";
+            PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                u.setID(rs.getInt("ID"));
+                u.setNombre(rs.getString("nombre"));
+                u.setContraseña(rs.getString("contraseña"));
+                u.setTipo(rs.getBoolean("tipo"));
+            }
+            ps.close();
+            ps = null;
+            c.desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo en el método read producto: " + ex);
+        }
+        return u;
     }
 }

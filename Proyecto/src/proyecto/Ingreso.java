@@ -13,7 +13,6 @@ import proyecto.Principal;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author jsant
@@ -22,8 +21,7 @@ public class Ingreso extends javax.swing.JFrame {
 
     private ImageIcon imagen;
     private Icon Icono;
-            
-            
+
     public Ingreso() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -110,17 +108,20 @@ public class Ingreso extends javax.swing.JFrame {
         // TODO add your handling code here:
         String pass;
         char[] arrayC = contrasena.getPassword();
-         pass = new String(arrayC);
-        if("Admin".equals(usuario.getText()) &&  "12345".equals(pass)){
-           
-            new Principal().setVisible(true);
-           this.setVisible(false);
-            
-        } else{
-          JOptionPane.showMessageDialog(null,"no se puede ingresar" );
+        pass = new String(arrayC);
+
+        daoUsuario dao = new daoUsuario();
+        EntidadUsuario user = new EntidadUsuario();
+        user = dao.read(usuario.getText());
+
+        if (user != null) {
+            if (pass.equals(user.getContraseña())) {
+                new Principal().setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "no se puede ingresar");
+            }
         }
-          //buscarPersona(jTextField1.getText());
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -154,31 +155,28 @@ public class Ingreso extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ingreso().setVisible(true);
-        
+
             }
         });
     }
-    
-    private void Ajustar(JLabel lbl, String ruta){
-        
+
+    private void Ajustar(JLabel lbl, String ruta) {
+
         this.imagen = new ImageIcon(ruta);
         this.Icono = new ImageIcon(this.imagen.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_DEFAULT));
         lbl.setIcon(this.Icono);
         this.repaint();
-        
-        
+
     }
-    public void buscarPersona(String buscar){
-      Logica logica= new Logica();
-      DefaultTableModel modelo= logica.buscarPersonas(buscar);
-     if(modelo.getColumnName(1)==usuario.getText() && modelo.getColumnName(2)==contrasena.getText() ){
-         new Principal().setVisible(true);
-     }
-         
-     
-      
-      
-  }
+
+    public void buscarPersona(String buscar) {
+        Logica logica = new Logica();
+        DefaultTableModel modelo = logica.buscarPersonas(buscar);
+        if (modelo.getColumnName(1) == usuario.getText() && modelo.getColumnName(2) == contrasena.getText()) {
+            new Principal().setVisible(true);
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contrasena;

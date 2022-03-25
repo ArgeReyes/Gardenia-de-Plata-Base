@@ -64,8 +64,8 @@ public class daoProducto {
         }
         return lista;
     }
-    
-    public boolean delete(int id){
+
+    public boolean delete(int id) {
         try {
             String sql = "DELETE FROM producto WHERE ID = ?";
             PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
@@ -80,10 +80,10 @@ public class daoProducto {
             return false;
         }
     }
-    
-    public boolean update(EntidadProducto p){
+
+    public boolean update(EntidadProducto p) {
         try {
-            String sql = "UPDATE producto SET nombre=?, consignacion=?, existencia=?, material=?, fechaIngreso=?, costo=? peso=? WHERE ID=?";
+            String sql = "UPDATE producto SET nombre=?, consignacion=?, existencia=?, material=?, fechaIngreso=?, costo=?, peso=? WHERE ID=?";
             PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
             ps.setString(1, p.getNombre());
             ps.setBoolean(2, p.isConsignacion());
@@ -92,17 +92,19 @@ public class daoProducto {
             ps.setString(5, p.getFechaIngreso());
             ps.setFloat(6, p.getCosto());
             ps.setFloat(7, p.getPeso());
+            ps.setInt(8, p.getID());
+
             ps.execute();
             ps.close();
             ps = null;
             c.desconectar();
             return true;
         } catch (SQLException ex) {
-            System.out.println("No se actualizó el registro");
+            System.out.println("No se actualizó el registro: " + ex);
             return false;
         }
     }
-    
+
     public EntidadProducto read(int id) {
         EntidadProducto p = new EntidadProducto();
         try {

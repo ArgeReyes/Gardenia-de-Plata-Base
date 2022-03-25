@@ -90,4 +90,9 @@ public class EntidadProducto {
         this.peso = peso;
     }
 
+    @Override
+    public String toString() {
+        return "EntidadProducto{" + "ID=" + ID + ", nombre=" + nombre + ", consignacion=" + consignacion + ", existencia=" + existencia + ", material=" + material + ", fechaIngreso=" + fechaIngreso + ", costo=" + costo + ", peso=" + peso + '}';
+    }
+
 }
