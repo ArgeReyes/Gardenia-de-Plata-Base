@@ -10,8 +10,10 @@ public class Conexion {
     String bd = "gardenia";
     String url = "jdbc:mysql://localhost:3306/" + bd;
     String user = "root";
+
     String pass = "martipj12";
 
+    
     public  Connection conectar() {
         try {
             Class.forName("com.mysql.jdbc.Driver");

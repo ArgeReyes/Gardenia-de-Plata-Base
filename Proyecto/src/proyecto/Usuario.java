@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyecto;
-
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ARGENTINA REYES
@@ -16,8 +21,18 @@ public class Usuario extends javax.swing.JFrame {
     public Usuario() {
         initComponents();
          this.setLocationRelativeTo(null);
+         
+         
+         
     }
 
+    String username="";
+    String pass="";
+    String passc="";
+    boolean esigual = false;
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +63,11 @@ public class Usuario extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, -1));
 
         jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
 
         jButton2.setText("Regresar");
@@ -66,6 +86,12 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 160, -1));
+
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 160, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Empleado" }));
@@ -103,7 +129,9 @@ public class Usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
+        // contraseña de usuario
+        
+       
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -111,8 +139,47 @@ public class Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        // Nombre de usuario
+        
+     
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // contraseña comprobación
+        
+
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Botón de registrar
+           username = jTextField1.getText();
+        
+             
+         char[] arrayC = jPasswordField1.getPassword();
+         pass = new String(arrayC);
+        
+         char[] arrayD = jPasswordField2.getPassword();
+         passc = new String(arrayD);
+         
+         
+         if (passc == null ? pass != null : !passc.equals(pass))
+         {
+             
+             esigual=false;
+         }
+         else
+         {
+            esigual=true;
+         }
+        
+        
+        
+        
+        if (esigual==false){
+        JOptionPane.showMessageDialog(null,"la contraseña no es igual");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
