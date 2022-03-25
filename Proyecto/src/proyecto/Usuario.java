@@ -131,9 +131,7 @@ public class Usuario extends javax.swing.JFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // contraseña de usuario
         
-         
-         char[] arrayC = jPasswordField1.getPassword();
-         pass = new String(arrayC);
+       
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -143,18 +141,29 @@ public class Usuario extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // Nombre de usuario
         
-        username = jTextField1.getText();
+     
         
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
         // contraseña comprobación
         
-         char[] arrayC = jPasswordField2.getPassword();
-         passc = new String(arrayC);
+
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Botón de registrar
+           username = jTextField1.getText();
+        
+             
+         char[] arrayC = jPasswordField1.getPassword();
+         pass = new String(arrayC);
+        
+         char[] arrayD = jPasswordField2.getPassword();
+         passc = new String(arrayD);
          
          
-         if (passc != pass)
+         if (passc == null ? pass != null : !passc.equals(pass))
          {
              
              esigual=false;
@@ -164,10 +173,7 @@ public class Usuario extends javax.swing.JFrame {
             esigual=true;
          }
         
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Botón de registrar
+        
         
         
         if (esigual==false){
