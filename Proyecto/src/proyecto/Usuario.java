@@ -30,6 +30,7 @@ public class Usuario extends javax.swing.JFrame {
     String pass="";
     String passc="";
     boolean esigual = false;
+    boolean tipo =false;
     
     
     
@@ -135,7 +136,7 @@ public class Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        // admin o empleado
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -161,6 +162,8 @@ public class Usuario extends javax.swing.JFrame {
         
          char[] arrayD = jPasswordField2.getPassword();
          passc = new String(arrayD);
+         
+         //if (jComboBox1=="admin" )
          
          
          if (passc == null ? pass != null : !passc.equals(pass))
