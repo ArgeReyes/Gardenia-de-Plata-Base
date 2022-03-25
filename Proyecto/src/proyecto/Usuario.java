@@ -167,18 +167,25 @@ public class Usuario extends javax.swing.JFrame {
          
          
          if (passc == null ? pass != null : !passc.equals(pass))
-         {
-             
+         {             
              esigual=false;
          }
          else
          {
             esigual=true;
+            
+        daoUsuario dao;
+        EntidadUsuario u;
+        dao = new daoUsuario();
+        
+        u = new EntidadUsuario(0, username, pass, true);
+        if (dao.create(u)) {
+            System.out.println("Se creó correctamente");
+        } else {
+            System.out.println("error");
+        }
          }
-        
-        
-        
-        
+   
         if (esigual==false){
         JOptionPane.showMessageDialog(null,"la contraseña no es igual");
         }

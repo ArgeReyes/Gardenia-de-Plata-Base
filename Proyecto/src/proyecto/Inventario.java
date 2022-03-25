@@ -50,6 +50,11 @@ public class Inventario extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Agregar pieza");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
         jButton2.setText("Editar pieza");
@@ -120,6 +125,11 @@ public class Inventario extends javax.swing.JFrame {
         // TODO add your handling code here:
         buscarPersona(Buscar.getText());
     }//GEN-LAST:event_BuscarKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new IngresarPieza().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

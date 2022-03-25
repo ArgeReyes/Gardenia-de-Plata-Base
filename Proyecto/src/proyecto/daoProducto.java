@@ -33,7 +33,7 @@ public class daoProducto {
             c.desconectar();
             return true;
         } catch (SQLException ex) {
-            System.out.println("No se insertó registro");
+            System.out.println("No se insertó registro: " + ex);
             return false;
         }
     }
