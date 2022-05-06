@@ -10,11 +10,10 @@ public class EntidadUsuario {
         System.out.println("Usuario creado");
     }
 
-    public EntidadUsuario(int ID, String nombre, String contraseña, boolean tipo) {
+    public EntidadUsuario(int ID, String nombre, String contraseña) {
         this.ID = ID;
         this.nombre = nombre;
         this.contraseña = contraseña;
-        this.tipo = tipo;
     }
     
     public EntidadUsuario(int ID, String nombre) {

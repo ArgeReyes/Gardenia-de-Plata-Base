@@ -28,13 +28,13 @@ public class Venta extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        precio = new javax.swing.JTextField();
+        textPrecio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        fecha = new javax.swing.JTextField();
+        textFecha = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        descuento = new javax.swing.JTextField();
+        textDescuento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        vendedor = new javax.swing.JTextField();
+        textVendedor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         textID = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -58,42 +58,42 @@ public class Venta extends javax.swing.JFrame {
         jLabel3.setText("Precio");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
-        precio.addActionListener(new java.awt.event.ActionListener() {
+        textPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precioActionPerformed(evt);
+                textPrecioActionPerformed(evt);
             }
         });
-        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 160, -1));
+        getContentPane().add(textPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
-        fecha.addActionListener(new java.awt.event.ActionListener() {
+        textFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaActionPerformed(evt);
+                textFechaActionPerformed(evt);
             }
         });
-        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, -1));
+        getContentPane().add(textFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Descuento %");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
-        getContentPane().add(descuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 160, -1));
+        getContentPane().add(textDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 160, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Producto");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
 
-        vendedor.addActionListener(new java.awt.event.ActionListener() {
+        textVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vendedorActionPerformed(evt);
+                textVendedorActionPerformed(evt);
             }
         });
-        getContentPane().add(vendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 160, -1));
+        getContentPane().add(textVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,6 +116,11 @@ public class Venta extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
 
         jButton2.setText("Registrar venta");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -178,9 +183,9 @@ public class Venta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxUsuariosActionPerformed
 
-    private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed
+    private void textPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_precioActionPerformed
+    }//GEN-LAST:event_textPrecioActionPerformed
 
 
     
@@ -189,19 +194,19 @@ public class Venta extends javax.swing.JFrame {
         
         validaciones v = new validaciones();
      
-        if(!v.ValidarNumero(precio.getText().trim())){
+        if(!v.ValidarNumero(textPrecio.getText().trim())){
         
             JOptionPane.showMessageDialog(rootPane, "Ingrese valores numéricos en precio");
         }
-        else if (!v.ValidarNumero(descuento.getText().trim())){
+        else if (!v.ValidarNumero(textDescuento.getText().trim())){
             JOptionPane.showMessageDialog(rootPane, "Ingrese valores numéricos en descuentos");
         }
         else{
-          int p = Integer.parseInt(precio.getText());
-          int d = Integer.parseInt(descuento.getText());
-          String f = fecha.getText();
+          int p = Integer.parseInt(textPrecio.getText());
+          int d = Integer.parseInt(textDescuento.getText());
+          String f = textFecha.getText();
           String u = textID.getText();
-          String ve = vendedor.getText();
+          String ve = textVendedor.getText();
           String pz = cbxUsuarios.getSelectedItem().toString();
             
             
@@ -210,13 +215,13 @@ public class Venta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
+    private void textFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fechaActionPerformed
+    }//GEN-LAST:event_textFechaActionPerformed
 
-    private void vendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedorActionPerformed
+    private void textVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textVendedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_vendedorActionPerformed
+    }//GEN-LAST:event_textVendedorActionPerformed
 
     private void cbxUsuariosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUsuariosItemStateChanged
         int id = cbxUsuarios.getItemAt(cbxUsuarios.getSelectedIndex()).getID();
@@ -224,6 +229,33 @@ public class Venta extends javax.swing.JFrame {
         textID.setText(idS);
     }//GEN-LAST:event_cbxUsuariosItemStateChanged
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        daoVentas dao;
+        EntidadVenta p;
+        dao = new daoVentas();
+
+        float precio = Float.parseFloat(textPrecio.getText());
+        int descuento = Integer.parseInt(textDescuento.getText());
+        int vendedorID = Integer.parseInt(textVendedor.getText());
+        int usuarioID = Integer.parseInt(textID.getText());
+
+        p = new EntidadVenta(0, precio, null, descuento, vendedorID, usuarioID);
+        if (dao.create(p)) {
+            JOptionPane.showMessageDialog(this, "Se insertó la venta exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se insertó la venta");
+        }
+        
+        limpiarCampos();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+     public void limpiarCampos(){
+        textPrecio.setText("");
+        textDescuento.setText("");
+        textVendedor.setText("");
+        textID.setText("");
+    }
+     
     /**
      * @param args the command line arguments
      */
@@ -262,8 +294,6 @@ public class Venta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
     private javax.swing.JComboBox<EntidadUsuario> cbxUsuarios;
-    private javax.swing.JTextField descuento;
-    private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
@@ -275,8 +305,10 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField precio;
+    private javax.swing.JTextField textDescuento;
+    private javax.swing.JTextField textFecha;
     private javax.swing.JTextField textID;
-    private javax.swing.JTextField vendedor;
+    private javax.swing.JTextField textPrecio;
+    private javax.swing.JTextField textVendedor;
     // End of variables declaration//GEN-END:variables
 }
