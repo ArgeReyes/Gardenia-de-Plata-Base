@@ -258,8 +258,8 @@ public class Inventario extends javax.swing.JFrame {
 
     public void buscarPersona(String buscar) {
         Logica logica = new Logica();
-        //DefaultTableModel modelo = logica.buscar(buscar);
-        //Tabla1.setModel(modelo);
+        DefaultTableModel modelo = logica.buscarPersonas(buscar);
+        Tabla1.setModel(modelo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

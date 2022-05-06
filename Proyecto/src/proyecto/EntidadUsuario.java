@@ -17,6 +17,11 @@ public class EntidadUsuario {
         this.tipo = tipo;
     }
     
+    public EntidadUsuario(int ID, String nombre) {
+        this.ID = ID;
+        this.nombre = nombre;
+    }
+    
     public int getID() {
         return ID;
     }
@@ -51,6 +56,6 @@ public class EntidadUsuario {
 
     @Override
     public String toString() {
-        return "EntidadUsuario{" + "ID=" + ID + ", nombre=" + nombre + ", contrase\u00f1a=" + contraseña + ", tipo=" + tipo + '}';
+        return nombre;
     }
 }
