@@ -35,6 +35,13 @@ public class Usuario extends javax.swing.JFrame {
     boolean tipo =false;
     
     
+    public String cifrado (String cadena)
+    {
+    
+    return;
+    }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,6 +179,8 @@ public class Usuario extends javax.swing.JFrame {
         }
         else {
         
+            
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
