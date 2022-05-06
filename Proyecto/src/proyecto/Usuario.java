@@ -188,7 +188,7 @@ public class Usuario extends javax.swing.JFrame {
                     EntidadUsuario u;
                     dao = new daoUsuario();
         
-                     u = new EntidadUsuario(0, username, passcif, true);
+                     u = new EntidadUsuario(0, username, passcif);
                     if (dao.create(u)) {
                      System.out.println("Se creó correctamente");
                     } else {
