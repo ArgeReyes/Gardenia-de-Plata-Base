@@ -4,6 +4,8 @@
  */
 package proyecto;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jsant
@@ -96,16 +98,23 @@ public class Vendedores extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // Registrar  
+        
+        
           Registro cliente = new Registro();
           validaciones v = new validaciones();
        
-        String Nombre = nombre.getText();
-       // if (!v.)
-        int Telefono = Integer.parseInt(telefono.getText());
-
-        cliente.Resgistro( Nombre, Telefono);
+           if(!v.ValidarNumero(telefono.getText().trim())){
         
+            JOptionPane.showMessageDialog(rootPane, "Ingrese valores numéricos en precio");
+           }
+           else {    
+           String Nombre = nombre.getText();
+      
+           int Telefono = Integer.parseInt(telefono.getText());
+
+           cliente.Resgistro( Nombre, Telefono);
+           }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed

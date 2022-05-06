@@ -71,6 +71,12 @@ public class Venta extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaActionPerformed(evt);
+            }
+        });
         getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -83,6 +89,12 @@ public class Venta extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Producto");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
+
+        vendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendedorActionPerformed(evt);
+            }
+        });
         getContentPane().add(vendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -164,11 +176,26 @@ public class Venta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ingrese valores numéricos en descuentos");
         }
         else{
-        
+          int p = Integer.parseInt(precio.getText());
+          int d = Integer.parseInt(descuento.getText());
+          String f = fecha.getText();
+          String u = usuario.getText();
+          String ve = vendedor.getText();
+          String pz = Piezas.getSelectedItem().toString();
+            
+            
         }
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaActionPerformed
+
+    private void vendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vendedorActionPerformed
 
     /**
      * @param args the command line arguments
