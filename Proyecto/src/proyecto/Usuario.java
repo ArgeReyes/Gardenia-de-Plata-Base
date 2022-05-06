@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyecto;
+import javax.crypto.*;
+import java.security.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
@@ -49,8 +51,6 @@ public class Usuario extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -100,19 +100,6 @@ public class Usuario extends javax.swing.JFrame {
         });
         getContentPane().add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 160, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Empleado" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Permisos de usuario:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, 30));
-
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Confirmar contraseña:");
@@ -139,10 +126,6 @@ public class Usuario extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_jPasswordField1ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // admin o empleado
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // Nombre de usuario
@@ -186,6 +169,9 @@ public class Usuario extends javax.swing.JFrame {
         
         if (esigual==false){
         JOptionPane.showMessageDialog(null,"la contraseña no es igual");
+        }
+        else {
+        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -236,10 +222,8 @@ public class Usuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
