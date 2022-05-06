@@ -3,15 +3,17 @@ package proyecto;
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class daoUsuario {
+
     Conexion c;
-   
-    public daoUsuario(){
+
+    public daoUsuario() {
         c = new Conexion();
     }
-    
-    public boolean create(EntidadUsuario u){
+
+    public boolean create(EntidadUsuario u) {
         try {
             String sql = "INSERT INTO usuario (ID, nombre, contraseña) values (?,?,?)";
             PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
@@ -28,7 +30,7 @@ public class daoUsuario {
             return false;
         }
     }
-    
+
     public EntidadUsuario read(String nombre) {
         EntidadUsuario u = new EntidadUsuario();
         try {
@@ -49,5 +51,26 @@ public class daoUsuario {
             System.out.println("Fallo en el método read producto: " + ex);
         }
         return u;
+    }
+
+    public ArrayList<EntidadUsuario> read() {
+        ArrayList<EntidadUsuario> lista = new ArrayList<EntidadUsuario>();
+        try {
+            String sql = "SELECT * FROM  usuario";
+            PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                EntidadUsuario p = new EntidadUsuario();
+                p.setID(rs.getInt("ID"));
+                p.setNombre(rs.getString("nombre"));
+                lista.add(p);
+            }
+            ps.close();
+            ps = null;
+            c.desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo en el método read: " + ex);
+        }
+        return lista;
     }
 }

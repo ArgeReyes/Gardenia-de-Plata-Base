@@ -14,7 +14,7 @@ public class Venta extends javax.swing.JFrame {
      */
     public Venta() {
         initComponents();
-        llenarProductos();
+        llenarUsuarios();
     }
 
     /**
@@ -37,14 +37,12 @@ public class Venta extends javax.swing.JFrame {
         vendedor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         textID = new javax.swing.JTextField();
-        usuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        cbxProductos = new javax.swing.JComboBox<>();
+        cbxUsuarios = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        Piezas = new javax.swing.JComboBox<>();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,8 +98,8 @@ public class Venta extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Usuario");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
-        getContentPane().add(textID, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 160, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
+        getContentPane().add(textID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 160, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 40, 30));
@@ -125,29 +123,22 @@ public class Venta extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
-        cbxProductos.addItemListener(new java.awt.event.ItemListener() {
+        cbxUsuarios.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbxProductosItemStateChanged(evt);
+                cbxUsuariosItemStateChanged(evt);
             }
         });
-        cbxProductos.addActionListener(new java.awt.event.ActionListener() {
+        cbxUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxProductosActionPerformed(evt);
+                cbxUsuariosActionPerformed(evt);
             }
         });
-        getContentPane().add(cbxProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 160, -1));
+        getContentPane().add(cbxUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 160, -1));
+
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Vendedor");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
-
-        Piezas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Piezas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PiezasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Piezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 160, -1));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Corinto.jpg"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 370));
@@ -169,25 +160,23 @@ public class Venta extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxProductosActionPerformed
 
     private void cbxProductosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProductosItemStateChanged
-        int id = cbxProductos.getItemAt(cbxProductos.getSelectedIndex()).getID();
-        String idS = id + "";
-        textID.setText(idS);
+        
     }//GEN-LAST:event_cbxProductosItemStateChanged
 
-    private void llenarProductos(){
-        daoProducto producto = new daoProducto();
-        ArrayList<EntidadProducto> listaProductos = producto.read();
+    private void llenarUsuarios(){
+        daoUsuario usuario = new daoUsuario();
+        ArrayList<EntidadUsuario> listaUsuarios = usuario.read();
         
-        cbxProductos.removeAllItems();
+        cbxUsuarios.removeAllItems();
         
-        for (int i = 0; i < listaProductos.size(); i++) {
-            cbxProductos.addItem(new EntidadProducto(listaProductos.get(i).getID(), listaProductos.get(i).getNombre()));
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            cbxUsuarios.addItem(new EntidadUsuario(listaUsuarios.get(i).getID(), listaUsuarios.get(i).getNombre()));
         }
     }
     
-    private void PiezasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PiezasActionPerformed
+    private void cbxUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUsuariosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PiezasActionPerformed
+    }//GEN-LAST:event_cbxUsuariosActionPerformed
 
     private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed
         // TODO add your handling code here:
@@ -211,9 +200,9 @@ public class Venta extends javax.swing.JFrame {
           int p = Integer.parseInt(precio.getText());
           int d = Integer.parseInt(descuento.getText());
           String f = fecha.getText();
-          String u = usuario.getText();
+          String u = textID.getText();
           String ve = vendedor.getText();
-          String pz = Piezas.getSelectedItem().toString();
+          String pz = cbxUsuarios.getSelectedItem().toString();
             
             
         }
@@ -228,6 +217,12 @@ public class Venta extends javax.swing.JFrame {
     private void vendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_vendedorActionPerformed
+
+    private void cbxUsuariosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUsuariosItemStateChanged
+        int id = cbxUsuarios.getItemAt(cbxUsuarios.getSelectedIndex()).getID();
+        String idS = id + "";
+        textID.setText(idS);
+    }//GEN-LAST:event_cbxUsuariosItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -266,8 +261,7 @@ public class Venta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
-    private javax.swing.JComboBox<EntidadProducto> cbxProductos;
-    private javax.swing.JComboBox<String> Piezas;
+    private javax.swing.JComboBox<EntidadUsuario> cbxUsuarios;
     private javax.swing.JTextField descuento;
     private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
@@ -281,13 +275,8 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField textID;
     private javax.swing.JTextField precio;
-    private javax.swing.JTextField usuario;
+    private javax.swing.JTextField textID;
     private javax.swing.JTextField vendedor;
     // End of variables declaration//GEN-END:variables
 }
