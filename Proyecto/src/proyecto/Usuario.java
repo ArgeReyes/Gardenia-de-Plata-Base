@@ -180,9 +180,21 @@ public class Usuario extends javax.swing.JFrame {
         
             cifrar c = new cifrar();
             
-            String passc;
+            String passcif;
                try {
-                   passc = c.cifrado(pass);
+                   passcif = c.cifrado(pass);
+                   
+                   daoUsuario dao;
+                    EntidadUsuario u;
+                    dao = new daoUsuario();
+        
+                     u = new EntidadUsuario(0, username, passcif, true);
+                    if (dao.create(u)) {
+                     System.out.println("Se creó correctamente");
+                    } else {
+                     System.out.println("error");
+                    }
+                   
                } catch (NoSuchAlgorithmException ex) {
                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(rootPane,"Error");
