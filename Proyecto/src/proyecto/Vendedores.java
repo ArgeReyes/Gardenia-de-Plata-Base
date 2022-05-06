@@ -29,8 +29,8 @@ public class Vendedores extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txt_Nombre = new javax.swing.JTextField();
-        txt_Telefono = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
+        telefono = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -54,13 +54,13 @@ public class Vendedores extends javax.swing.JFrame {
         jLabel3.setText("Nombre");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
-        txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
+        nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NombreActionPerformed(evt);
+                nombreActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 160, -1));
-        getContentPane().add(txt_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 160, -1));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 160, -1));
+        getContentPane().add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 160, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 320));
@@ -98,18 +98,19 @@ public class Vendedores extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
           Registro cliente = new Registro();
-
+          validaciones v = new validaciones();
        
-        String Nombre = txt_Nombre.getText();
-        int Telefono = Integer.parseInt(txt_Telefono.getText());
+        String Nombre = nombre.getText();
+       // if (!v.)
+        int Telefono = Integer.parseInt(telefono.getText());
 
         cliente.Resgistro( Nombre, Telefono);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_NombreActionPerformed
+    }//GEN-LAST:event_nombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,7 +155,7 @@ public class Vendedores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txt_Nombre;
-    private javax.swing.JTextField txt_Telefono;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }
