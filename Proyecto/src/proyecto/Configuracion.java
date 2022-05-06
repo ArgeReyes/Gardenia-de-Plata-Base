@@ -67,7 +67,7 @@ public class Configuracion extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa (2).png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 80, 60));
@@ -99,7 +99,9 @@ public class Configuracion extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Buscar usuario
         
-        
+        BuscarUsuario a = new BuscarUsuario();
+        a.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
