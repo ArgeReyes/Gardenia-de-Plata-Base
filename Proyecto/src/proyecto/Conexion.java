@@ -11,7 +11,7 @@ public class Conexion {
     String url = "jdbc:mysql://localhost:3306/" + bd;
     String user = "root";
 
-    String pass = "2010";
+    String pass = "martipj12";
 
     
     public  Connection conectar() {

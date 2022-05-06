@@ -161,8 +161,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // Inventario
         
-        Inventario a = new Inventario();
-        a.setVisible(true);
+        new Inventario().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton7ActionPerformed
 
