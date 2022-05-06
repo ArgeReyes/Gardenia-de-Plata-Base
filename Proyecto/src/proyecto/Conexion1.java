@@ -25,7 +25,6 @@ public class Conexion1 {
         String url = "jdbc:mysql://localhost:3306/gardenia";
         String user = "root";// el usuario que ustedes tienen
         String pass = "bbbbbbb7";// la clave que uestedes tienen
-        String pass = "martipj12";// la clave que uestedes tienen
         
         try
         {

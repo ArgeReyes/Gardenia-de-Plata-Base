@@ -109,7 +109,6 @@ public class IngresarPieza extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, -1, -1));
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, -1, -1));
 
         jToggleButton1.setText("Regresar");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,11 +146,7 @@ public class IngresarPieza extends javax.swing.JFrame {
     }//GEN-LAST:event_textNombreActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // Regresar
-        
-        Principal a = new Principal();
-        a.setVisible(true);
-        this.setVisible(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -190,9 +185,6 @@ public class IngresarPieza extends javax.swing.JFrame {
         textPeso.setText("");
     }
     
-        // Ejecuta guardar
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
