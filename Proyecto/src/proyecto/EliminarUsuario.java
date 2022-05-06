@@ -4,6 +4,12 @@
  */
 package proyecto;
 
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ARGENTINA REYES
@@ -14,6 +20,7 @@ public class EliminarUsuario extends javax.swing.JFrame {
      * Creates new form EliminarUsuario
      */
     public EliminarUsuario() {
+        
         initComponents();
     }
 
@@ -27,8 +34,8 @@ public class EliminarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        usuario = new javax.swing.JTextField();
+        contrasena = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -42,8 +49,20 @@ public class EliminarUsuario extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Contraseña:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, 30));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 210, -1));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 210, -1));
+
+        usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 210, -1));
+
+        contrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contrasenaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 210, -1));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,10 +96,24 @@ public class EliminarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void buscarUsuario(String buscar, String Contra) throws NoSuchAlgorithmException {
+        Logica logica = new Logica();
+        cifrar c = new cifrar();
+        DefaultTableModel modelo = logica.BuscarUser(buscar, Contra);
+        if (modelo.getValueAt(0, 1).equals(usuario.getText()) && modelo.getValueAt(0, 2).equals(c.cifrado(contrasena.getText()))) {
+           JOptionPane.showMessageDialog(rootPane,"Confirmado");
+        }
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Ejecuta eliminar 
+         cifrar c = new cifrar();
         
-        
+        try {
+            buscarUsuario(usuario.getText(), c.cifrado(contrasena.getText()));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(EliminarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         BuscarUsuario a = new BuscarUsuario();
         a.setVisible(true);
         this.setVisible(false);
@@ -97,6 +130,14 @@ public class EliminarUsuario extends javax.swing.JFrame {
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuarioActionPerformed
+
+    private void contrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contrasenaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,13 +175,13 @@ public class EliminarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField contrasena;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }
