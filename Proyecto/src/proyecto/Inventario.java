@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package proyecto;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author ARGENTINA REYES
- */
 public class Inventario extends javax.swing.JFrame {
 
     /**
@@ -18,7 +11,7 @@ public class Inventario extends javax.swing.JFrame {
     public Inventario() {
         initComponents();
         mostrarClientes();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -41,39 +34,59 @@ public class Inventario extends javax.swing.JFrame {
         Tabla1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Agregar pieza");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         jButton2.setText("Editar pieza");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
 
         jButton3.setText("Eliminar pieza");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa (1).png"))); // NOI18N
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, -1, -1));
 
         Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +130,9 @@ public class Inventario extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, -1));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 40, 270));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Corinto.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 520));
 
@@ -136,23 +152,61 @@ public class Inventario extends javax.swing.JFrame {
         buscarPersona(Buscar.getText());
     }//GEN-LAST:event_BuscarKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        new IngresarPieza().setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // Eliminar producto
+        int id = Integer.parseInt(Buscar.getText());
+        daoProducto dao;
+        EntidadProducto p;
+        dao = new daoProducto();
+        if (dao.delete(id)) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el producto exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se eliminó registro");
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // Regresar
-        
-        Principal a = new Principal();
-        a.setVisible(true);
+        // TODO add your handling code here:
+
         this.setVisible(false);
-        
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Agregar pieza
-        
-        IngresarPieza a = new IngresarPieza();
-        a.setVisible(true);
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        daoProducto dao;
+        dao = new daoProducto();
+        new Principal().setVisible(true);
+        int filaSeleccionada = Tabla1.getSelectedRow();
+
+        int ID = Integer.parseInt(String.valueOf(Tabla1.getValueAt(filaSeleccionada, 0)));
+        String nombre = String.valueOf(Tabla1.getValueAt(filaSeleccionada, 1));
+        boolean consignacion = Boolean.valueOf(String.valueOf(Tabla1.getValueAt(filaSeleccionada, 2)));
+        int existencia = Integer.parseInt(String.valueOf(Tabla1.getValueAt(filaSeleccionada, 3)));
+        String material = String.valueOf(Tabla1.getValueAt(filaSeleccionada, 4));
+        String fechaIngreso = String.valueOf(Tabla1.getValueAt(filaSeleccionada, 5));
+        float costo = Float.valueOf(String.valueOf(Tabla1.getValueAt(filaSeleccionada, 6)));
+        float peso = Float.valueOf(String.valueOf(Tabla1.getValueAt(filaSeleccionada, 7)));
+        System.out.println(Tabla1.getValueAt(filaSeleccionada, 0));
+        EntidadProducto p1 = new EntidadProducto(ID, nombre, consignacion, existencia, material, fechaIngreso, costo, peso);
+        System.out.println(p1.toString());
+        if (dao.update(p1)) {
+            JOptionPane.showMessageDialog(this, "Se insertó el producto exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se insertó registro");
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -192,22 +246,22 @@ public class Inventario extends javax.swing.JFrame {
             }
         });
     }
-    
-     public void mostrarClientes()
-    {
+
+    public void mostrarClientes() {
         Logica logica = new Logica();
-        
+
         DefaultTableModel modelo = logica.mostrarClientes();
-        
+
         Tabla1.setModel(modelo);
-        
+
     }
-     public void buscarPersona(String buscar){
-      Logica logica= new Logica();
-      DefaultTableModel modelo= logica.buscarPersonas(buscar);
-      Tabla1.setModel(modelo);
-      
-  }
+
+    public void buscarPersona(String buscar) {
+        Logica logica = new Logica();
+        DefaultTableModel modelo = logica.buscarPersonas(buscar);
+        Tabla1.setModel(modelo);
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buscar;
@@ -219,6 +273,7 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;

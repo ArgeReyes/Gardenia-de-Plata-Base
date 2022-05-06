@@ -11,12 +11,12 @@ public class Conexion {
     String url = "jdbc:mysql://localhost:3306/" + bd;
     String user = "root";
 
-    String pass = "martipj12";
+    String pass = "bbbbbbb7";
 
     
     public  Connection conectar() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.gjt.mm.mysql.Driver");
             cx = (Connection)DriverManager.getConnection(url, user, pass);
             System.out.println("Se conectó correctamente");
         } catch (ClassNotFoundException | SQLException ex) {
