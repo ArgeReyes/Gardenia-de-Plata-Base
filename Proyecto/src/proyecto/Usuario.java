@@ -185,8 +185,9 @@ public class Usuario extends javax.swing.JFrame {
                    passc = c.cifrado(pass);
                } catch (NoSuchAlgorithmException ex) {
                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane,"Error");
                }
-            JOptionPane.showMessageDialog(rootPane,"Error");
+           
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
