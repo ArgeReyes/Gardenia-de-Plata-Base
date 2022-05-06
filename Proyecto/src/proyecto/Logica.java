@@ -20,12 +20,12 @@ import javax.swing.table.DefaultTableModel;
 public class Logica {
  public DefaultTableModel mostrarClientes()
     {
-        String []  nombresColumnas = {"ID","Nombre","Telefono"};
-        String [] registros = new String[3];
+        String []  nombresColumnas = {"ID","Nombre","consignacion","existencia","material","fechaIngreso","costo","peso"};
+        String [] registros = new String[8];
         
         DefaultTableModel modelo = new DefaultTableModel(null,nombresColumnas);
         
-        String sql = "SELECT * FROM vendedor";
+        String sql = "SELECT * FROM producto";
         
         Connection con = null;
         
@@ -47,7 +47,12 @@ public class Logica {
                 
                 registros[1] = rs.getString("Nombre");
                 
-                registros[2] = rs.getString("Telefono");
+                registros[2] = rs.getString("consignacion");
+                registros[3] = rs.getString("existencia");
+                registros[4] = rs.getString("material");
+                registros[5] = rs.getString("fechaIngreso");
+                registros[6] = rs.getString("costo");
+                registros[7] = rs.getString("peso");
                 
                 modelo.addRow(registros);
                 
@@ -84,13 +89,13 @@ public class Logica {
 
         int contador = 1; // Dedicado para acomular en número de registros que hay en la tabla
         
-        String []  nombresColumnas = {"  #  ","ID","Nombre","Telefono"," "};//Indica el nombre de las columnas en la tabla
+        String []  nombresColumnas = {"  #  ","Nombre","consignacion","existencia","material","fechaIngreso","costo","peso"," "};//Indica el nombre de las columnas en la tabla
         
-        String [] registros = new String[4];
+        String [] registros = new String[9];
         
         DefaultTableModel modelo = new DefaultTableModel(null, nombresColumnas);
         
-        String sql = "SELECT * FROM vendedor WHERE ID LIKE '%"+buscar+"%' OR nombre LIKE '%"+buscar+"%'";
+        String sql = "SELECT * FROM producto WHERE ID LIKE '%"+buscar+"%' OR nombre LIKE '%"+buscar+"%'";
         
         Connection cn = null;
         
@@ -108,13 +113,16 @@ public class Logica {
             
             while(rs.next())
             {
-                registros[0] = Integer.toString(contador);
+                registros[0] = rs.getString("ID");
                 
-                registros[1] = rs.getString("ID");
+                registros[1] = rs.getString("Nombre");
                 
-                registros[2] = rs.getString("Nombre");
-               
-                registros[3] = rs.getString("Telefono");                                
+                registros[2] = rs.getString("consignacion");
+                registros[3] = rs.getString("existencia");
+                registros[4] = rs.getString("material");
+                registros[5] = rs.getString("fechaIngreso");
+                registros[6] = rs.getString("costo");
+                registros[7] = rs.getString("peso");                            
                 
                 modelo.addRow(registros);
                 

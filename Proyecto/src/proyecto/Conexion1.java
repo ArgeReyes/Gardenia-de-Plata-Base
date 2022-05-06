@@ -24,12 +24,11 @@ public class Conexion1 {
         
         String url = "jdbc:mysql://localhost:3306/gardenia";
         String user = "root";// el usuario que ustedes tienen
-        String pass = "2010";// la clave que uestedes tienen
+        String pass = "bbbbbbb7";// la clave que uestedes tienen
         
         try
         {
             Class.forName("org.gjt.mm.mysql.Driver");
-            
             con =  DriverManager.getConnection(url, user, pass);
             
         }
