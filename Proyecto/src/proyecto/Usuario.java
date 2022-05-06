@@ -35,11 +35,8 @@ public class Usuario extends javax.swing.JFrame {
     boolean tipo =false;
     
     
-    public String cifrado (String cadena)
-    {
     
-    return;
-    }
+    
     
     
     
