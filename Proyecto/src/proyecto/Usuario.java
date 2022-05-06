@@ -176,7 +176,10 @@ public class Usuario extends javax.swing.JFrame {
         }
         else {
         
+            cifrar c = new cifrar();
             
+            String passc = c.cifrado(pass);
+            JOptionPane.showMessageDialog(rootPane,passc);
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed

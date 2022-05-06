@@ -1,4 +1,4 @@
-package proyecto;
+|package proyecto;
 
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.SQLException;

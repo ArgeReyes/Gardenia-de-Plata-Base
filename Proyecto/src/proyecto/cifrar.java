@@ -13,12 +13,12 @@ import java.security.*;
 public class cifrar {
     
     
-        public String cifrado (String cadena)
+        public String cifrado (String cadena) throws NoSuchAlgorithmException
     {
-        try{
+        
             java.security.MessageDigest cf = java.security.MessageDigest.getInstance("MD5");
             byte[] array = cf.digest(cadena.getBytes());
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             
             for (int i=0; i<array.length; i++)
             {
@@ -27,9 +27,5 @@ public class cifrar {
             }
                 
         return sb.toString();
-    }catch (java.security.NoSuchAlgorithmException e)
-        
-    
     }
-    
-
+  }

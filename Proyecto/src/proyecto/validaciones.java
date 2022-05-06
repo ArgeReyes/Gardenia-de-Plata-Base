@@ -10,4 +10,18 @@ package proyecto;
  */
 public class validaciones {
     
+    public static boolean ValidarNumero (String datos){
+    
+        return datos.matches("[0-9-.]*");
+    }
+    
+    private static boolean isNumeric(String cadena){
+	try {
+		Float.parseFloat(cadena);
+		return true;
+	} catch (NumberFormatException nfe){
+		return false;
+	}
+}
+    
 }

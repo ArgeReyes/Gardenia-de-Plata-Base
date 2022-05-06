@@ -1,6 +1,9 @@
 package proyecto;
 
 import java.awt.Image;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -22,7 +25,7 @@ public class Ingreso extends javax.swing.JFrame {
 
     private ImageIcon imagen;
     private Icon Icono;
-            
+       
             
     public Ingreso() {
         initComponents();
@@ -118,7 +121,11 @@ public class Ingreso extends javax.swing.JFrame {
         char[] arrayC = contrasena.getPassword();
          pass = new String(arrayC);
          
-         
+        try {
+            buscarPersona(usuario.getText());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
          
         if("Admin".equals(usuario.getText()) &&  "12345".equals(pass)){
            
@@ -127,8 +134,9 @@ public class Ingreso extends javax.swing.JFrame {
             
         } else{
           JOptionPane.showMessageDialog(null,"no se puede ingresar" );
+           
         }
-          //buscarPersona(jTextField1.getText());
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -181,10 +189,12 @@ public class Ingreso extends javax.swing.JFrame {
         
         
     }
-    public void buscarPersona(String buscar){
+    public void buscarPersona(String buscar) throws NoSuchAlgorithmException{
       Logica logica= new Logica();
+      cifrar c= new cifrar();    
+      
       DefaultTableModel modelo= logica.buscarPersonas(buscar);
-     if(modelo.getColumnName(1)==usuario.getText() && modelo.getColumnName(2)==contrasena.getText() ){
+     if(modelo.getColumnName(1)==usuario.getText() && modelo.getColumnName(2)== c.cifrado(contrasena.getText()) ){
          new Principal().setVisible(true);
      }
          
