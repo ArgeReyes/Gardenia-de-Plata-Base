@@ -16,7 +16,6 @@ import proyecto.Principal;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author jsant
@@ -25,8 +24,7 @@ public class Ingreso extends javax.swing.JFrame {
 
     private ImageIcon imagen;
     private Icon Icono;
-       
-            
+
     public Ingreso() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -116,28 +114,34 @@ public class Ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         String pass;
         char[] arrayC = contrasena.getPassword();
-         pass = new String(arrayC);
-         
+        pass = new String(arrayC);
+        cifrar c = new cifrar();
+
         try {
-            buscarPersona(usuario.getText());
+            buscarUsuario(usuario.getText(), c.cifrado(pass));
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+
         }
-         
-        if("Admin".equals(usuario.getText()) &&  "12345".equals(pass)){
-           
+
+        if ("Admin".equals(usuario.getText()) && "12345".equals(pass)) {
+
             new Principal().setVisible(true);
             this.setVisible(false);
-            
-        } else{
-          JOptionPane.showMessageDialog(null,"no se puede ingresar" );
-           
+
         }
-        
-        
+
+//        if("Admin".equals(usuario.getText()) &&  "12345".equals(pass)){
+//           
+//            new Principal().setVisible(true);
+//            this.setVisible(false);
+//            
+//        } else{
+//          JOptionPane.showMessageDialog(null,"no se puede ingresar" );
+//           
+//        }        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void contrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaActionPerformed
@@ -175,34 +179,28 @@ public class Ingreso extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ingreso().setVisible(true);
-        
+
             }
         });
     }
-    
-    private void Ajustar(JLabel lbl, String ruta){
-        
+
+    private void Ajustar(JLabel lbl, String ruta) {
+
         this.imagen = new ImageIcon(ruta);
         this.Icono = new ImageIcon(this.imagen.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_DEFAULT));
         lbl.setIcon(this.Icono);
         this.repaint();
-        
-        
-    }
-    public void buscarPersona(String buscar) throws NoSuchAlgorithmException{
-      Logica logica= new Logica();
-      cifrar c= new cifrar();    
-      
-      DefaultTableModel modelo= logica.buscarPersonas(buscar);
-     if(modelo.getColumnName(1)==usuario.getText() && modelo.getColumnName(2)== c.cifrado(contrasena.getText()) ){
-         new Principal().setVisible(true);
-     }
-         
-     
-      
-      
-  }
 
+    }
+
+    public void buscarUsuario(String buscar, String Contra) throws NoSuchAlgorithmException {
+        Logica logica = new Logica();
+        cifrar c = new cifrar();
+        DefaultTableModel modelo = logica.BuscarUser(buscar, Contra);
+        if (modelo.getValueAt(0, 1).equals(usuario.getText()) && modelo.getValueAt(0, 2).equals(c.cifrado(contrasena.getText()))) {
+            new Principal().setVisible(true);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contrasena;
     private javax.swing.JButton jButton1;

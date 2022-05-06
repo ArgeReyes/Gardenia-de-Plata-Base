@@ -13,12 +13,11 @@ public class daoUsuario {
     
     public boolean create(EntidadUsuario u){
         try {
-            String sql = "INSERT INTO usuario (ID, nombre, contraseña, tipo) values (?,?,?,?)";
+            String sql = "INSERT INTO usuario (ID, nombre, contraseña) values (?,?,?)";
             PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
             ps.setInt(1, u.getID());
             ps.setString(2, u.getNombre());
             ps.setString(3, u.getContraseña());
-            ps.setBoolean(4, u.isTipo());
             ps.execute();
             ps.close();
             ps = null;
