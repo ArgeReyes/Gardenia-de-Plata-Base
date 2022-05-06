@@ -91,7 +91,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         // Eliminar Ejecutar primero buscar...
         
         
-        
+        String Buscar = jTextField1.getText();
         
         
         EliminarUsuario a = new EliminarUsuario();
@@ -113,7 +113,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Buscar
         
-        
+        String Buscar = jTextField1.getText();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

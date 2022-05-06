@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Marti Pérez
  */
 public class Registro {
-  public boolean Resgistro(int ID, String Nombre, int Telefono){
+  public boolean Resgistro( String Nombre, int Telefono){
         String sql="INSERT INTO vendedor(ID, Nombre, Telefono) VALUES (?,?,?)";
         Connection conectar;
         PreparedStatement pst;
@@ -25,7 +25,7 @@ public class Registro {
             conectar=(Connection) Conexion1.getConnection();
               pst = conectar.prepareStatement(sql);
             
-            pst.setInt(1,ID);
+            
             
             pst.setString(2, Nombre);
             
