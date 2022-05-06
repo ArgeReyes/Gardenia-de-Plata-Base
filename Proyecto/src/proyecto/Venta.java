@@ -1,6 +1,7 @@
 package proyecto;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,20 +28,23 @@ public class Venta extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        fecha = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        descuento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        vendedor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         textID = new javax.swing.JTextField();
+        usuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         cbxProductos = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        Piezas = new javax.swing.JComboBox<>();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,25 +59,43 @@ public class Venta extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Precio");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 160, -1));
+
+        precio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, -1));
+
+        fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Descuento");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 160, -1));
+        jLabel5.setText("Descuento %");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
+        getContentPane().add(descuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 160, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Vendedor");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 160, -1));
+        jLabel6.setText("Producto");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
+
+        vendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendedorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(vendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,6 +118,11 @@ public class Venta extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
 
         jButton2.setText("Registrar venta");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
         cbxProductos.addItemListener(new java.awt.event.ItemListener() {
@@ -109,6 +136,18 @@ public class Venta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cbxProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 160, -1));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Vendedor");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
+
+        Piezas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Piezas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PiezasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Piezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 160, -1));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Corinto.jpg"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 370));
@@ -146,6 +185,50 @@ public class Venta extends javax.swing.JFrame {
         }
     }
     
+    private void PiezasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PiezasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PiezasActionPerformed
+
+    private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioActionPerformed
+
+
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Registrar venta
+        
+        validaciones v = new validaciones();
+     
+        if(!v.ValidarNumero(precio.getText().trim())){
+        
+            JOptionPane.showMessageDialog(rootPane, "Ingrese valores numéricos en precio");
+        }
+        else if (!v.ValidarNumero(descuento.getText().trim())){
+            JOptionPane.showMessageDialog(rootPane, "Ingrese valores numéricos en descuentos");
+        }
+        else{
+          int p = Integer.parseInt(precio.getText());
+          int d = Integer.parseInt(descuento.getText());
+          String f = fecha.getText();
+          String u = usuario.getText();
+          String ve = vendedor.getText();
+          String pz = Piezas.getSelectedItem().toString();
+            
+            
+        }
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaActionPerformed
+
+    private void vendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vendedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -184,8 +267,12 @@ public class Venta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
     private javax.swing.JComboBox<EntidadProducto> cbxProductos;
+    private javax.swing.JComboBox<String> Piezas;
+    private javax.swing.JTextField descuento;
+    private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -199,5 +286,8 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField textID;
+    private javax.swing.JTextField precio;
+    private javax.swing.JTextField usuario;
+    private javax.swing.JTextField vendedor;
     // End of variables declaration//GEN-END:variables
 }

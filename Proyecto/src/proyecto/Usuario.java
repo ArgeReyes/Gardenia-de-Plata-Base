@@ -10,6 +10,8 @@ import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -33,6 +35,8 @@ public class Usuario extends javax.swing.JFrame {
     String passc="";
     boolean esigual = false;
     boolean tipo =false;
+    
+    
     
     
     
@@ -174,7 +178,15 @@ public class Usuario extends javax.swing.JFrame {
         }
         else {
         
+            cifrar c = new cifrar();
             
+            String passc;
+               try {
+                   passc = c.cifrado(pass);
+               } catch (NoSuchAlgorithmException ex) {
+                   Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+               }
+            JOptionPane.showMessageDialog(rootPane,"Error");
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
