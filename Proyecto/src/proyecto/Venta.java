@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package proyecto;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +13,7 @@ public class Venta extends javax.swing.JFrame {
      */
     public Venta() {
         initComponents();
+        llenarProductos();
     }
 
     /**
@@ -36,11 +35,12 @@ public class Venta extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        textID = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        cbxProductos = new javax.swing.JComboBox<>();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,8 +78,8 @@ public class Venta extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Usuario");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 160, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
+        getContentPane().add(textID, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 160, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 40, 30));
@@ -98,6 +98,18 @@ public class Venta extends javax.swing.JFrame {
         jButton2.setText("Registrar venta");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
+        cbxProductos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxProductosItemStateChanged(evt);
+            }
+        });
+        cbxProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxProductosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbxProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 160, -1));
+
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Corinto.jpg"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 370));
 
@@ -113,6 +125,27 @@ public class Venta extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cbxProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxProductosActionPerformed
+
+    private void cbxProductosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProductosItemStateChanged
+        int id = cbxProductos.getItemAt(cbxProductos.getSelectedIndex()).getID();
+        String idS = id + "";
+        textID.setText(idS);
+    }//GEN-LAST:event_cbxProductosItemStateChanged
+
+    private void llenarProductos(){
+        daoProducto producto = new daoProducto();
+        ArrayList<EntidadProducto> listaProductos = producto.read();
+        
+        cbxProductos.removeAllItems();
+        
+        for (int i = 0; i < listaProductos.size(); i++) {
+            cbxProductos.addItem(new EntidadProducto(listaProductos.get(i).getID(), listaProductos.get(i).getNombre()));
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -150,6 +183,7 @@ public class Venta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
+    private javax.swing.JComboBox<EntidadProducto> cbxProductos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
@@ -164,6 +198,6 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField textID;
     // End of variables declaration//GEN-END:variables
 }

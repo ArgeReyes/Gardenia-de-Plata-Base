@@ -8,8 +8,6 @@ import java.util.ArrayList;
  */
 public class daoVentas {
     private void llenarClientes(){
-        daoProducto producto = new daoProducto();
-        ArrayList<EntidadProducto> listarProductos = producto.read();
         
         
     }

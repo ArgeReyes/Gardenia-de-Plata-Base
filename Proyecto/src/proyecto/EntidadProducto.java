@@ -25,6 +25,11 @@ public class EntidadProducto {
         this.costo = costo;
         this.peso = peso;
     }
+    
+    public EntidadProducto(int ID, String nombre){
+        this.ID = ID;
+        this.nombre = nombre;
+    }
 
     public int getID() {
         return ID;
@@ -92,7 +97,7 @@ public class EntidadProducto {
 
     @Override
     public String toString() {
-        return "EntidadProducto{" + "ID=" + ID + ", nombre=" + nombre + ", consignacion=" + consignacion + ", existencia=" + existencia + ", material=" + material + ", fechaIngreso=" + fechaIngreso + ", costo=" + costo + ", peso=" + peso + '}';
+        return nombre;
     }
 
 }
