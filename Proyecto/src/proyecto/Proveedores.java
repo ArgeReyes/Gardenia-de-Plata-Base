@@ -118,7 +118,7 @@ public class Proveedores extends javax.swing.JFrame {
        
            if(!v.ValidarNumero(telefono.getText().trim())){
         
-            JOptionPane.showMessageDialog(rootPane, "Ingrese valores numéricos en precio");
+            JOptionPane.showMessageDialog(rootPane, "Ingrese valores numéricos en teléfono");
            }
            else {    
            String Nombre = nombre.getText();

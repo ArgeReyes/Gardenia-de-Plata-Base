@@ -111,12 +111,16 @@ public class EliminarUsuario extends javax.swing.JFrame {
         
         try {
             buscarUsuario(usuario.getText(), c.cifrado(contrasena.getText()));
+            BuscarUsuario a = new BuscarUsuario();
+            a.setVisible(true);
+            this.setVisible(false);
+            
+            
+            
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(EliminarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        BuscarUsuario a = new BuscarUsuario();
-        a.setVisible(true);
-        this.setVisible(false);
+
         
         
         
