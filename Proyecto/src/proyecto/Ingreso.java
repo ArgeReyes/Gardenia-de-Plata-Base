@@ -94,6 +94,12 @@ public class Ingreso extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Tela 2 tipica.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 40, 190));
+
+        contrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contrasenaActionPerformed(evt);
+            }
+        });
         getContentPane().add(contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 200, 30));
 
         jFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Corinto.jpg"))); // NOI18N
@@ -111,6 +117,9 @@ public class Ingreso extends javax.swing.JFrame {
         String pass;
         char[] arrayC = contrasena.getPassword();
          pass = new String(arrayC);
+         
+         
+         
         if("Admin".equals(usuario.getText()) &&  "12345".equals(pass)){
            
             new Principal().setVisible(true);
@@ -122,6 +131,10 @@ public class Ingreso extends javax.swing.JFrame {
           //buscarPersona(jTextField1.getText());
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void contrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contrasenaActionPerformed
 
     /**
      * @param args the command line arguments
