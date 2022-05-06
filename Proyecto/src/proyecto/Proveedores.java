@@ -134,6 +134,21 @@ public class Proveedores extends javax.swing.JFrame {
                con= false;
            }
            
+                    daoProveedor dao;
+                    EntidadProveedor u;
+                    dao = new daoProveedor();
+        
+                     u = new EntidadProveedor(0, Nombre ,Telefono,con );
+                    if (dao.create(u)) {
+                     JOptionPane.showMessageDialog(null,"Se creó correctamente");
+                     
+                     nombre.setText(" ");
+                     telefono.setText(" ");
+                     
+                    } else {
+                     JOptionPane.showMessageDialog(null,"Error");
+                    }
+           
            
            
            }
