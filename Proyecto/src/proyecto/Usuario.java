@@ -190,9 +190,9 @@ public class Usuario extends javax.swing.JFrame {
         
                      u = new EntidadUsuario(0, username, passcif);
                     if (dao.create(u)) {
-                     System.out.println("Se creó correctamente");
+                     JOptionPane.showMessageDialog(rootPane,"Se creó correctamente");
                     } else {
-                     System.out.println("error");
+                     JOptionPane.showMessageDialog(rootPane,"Error");
                     }
                    
                } catch (NoSuchAlgorithmException ex) {
