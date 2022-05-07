@@ -1,6 +1,5 @@
 package proyecto;
 
-import com.mysql.jdbc.PreparedStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,7 +45,6 @@ public class daoUsuario {
                 u.setID(rs.getInt("ID"));
                 u.setNombre(rs.getString("nombre"));
                 u.setContraseña(rs.getString("contraseña"));
-                u.setTipo(rs.getBoolean("tipo"));
             }
             ps.close();
             ps = null;
@@ -55,6 +53,22 @@ public class daoUsuario {
             System.out.println("Fallo en el método read producto: " + ex);
         }
         return u;
+    }
+    
+    public boolean delete(String nombre) {
+        try {
+            String sql = "DELETE FROM usuario WHERE nombre = ?";
+            com.mysql.jdbc.PreparedStatement ps = (com.mysql.jdbc.PreparedStatement) c.conectar().prepareStatement(sql);
+            ps.setString(1, nombre);
+            ps.execute();
+            ps.close();
+            ps = null;
+            c.desconectar();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Fallo al elimiar: " + ex);
+            return false;
+        }
     }
 
      public DefaultTableModel buscarUsuario(String buscar) {

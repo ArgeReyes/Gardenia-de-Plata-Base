@@ -20,7 +20,7 @@ public class EliminarUsuario extends javax.swing.JFrame {
      * Creates new form EliminarUsuario
      */
     public EliminarUsuario() {
-        
+
         initComponents();
     }
 
@@ -34,7 +34,7 @@ public class EliminarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
-        usuario = new javax.swing.JTextField();
+        user = new javax.swing.JTextField();
         contrasena = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -50,12 +50,12 @@ public class EliminarUsuario extends javax.swing.JFrame {
         jLabel6.setText("Contraseña:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, 30));
 
-        usuario.addActionListener(new java.awt.event.ActionListener() {
+        user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioActionPerformed(evt);
+                userActionPerformed(evt);
             }
         });
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 210, -1));
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 210, -1));
 
         contrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,44 +100,41 @@ public class EliminarUsuario extends javax.swing.JFrame {
         Logica logica = new Logica();
         cifrar c = new cifrar();
         DefaultTableModel modelo = logica.BuscarUser(buscar, Contra);
-        if (modelo.getValueAt(0, 1).equals(usuario.getText()) && modelo.getValueAt(0, 2).equals(c.cifrado(contrasena.getText()))) {
-           JOptionPane.showMessageDialog(rootPane,"Confirmado");
+        if (modelo.getValueAt(0, 1).equals(user.getText()) && modelo.getValueAt(0, 2).equals(c.cifrado(contrasena.getText()))) {
+            JOptionPane.showMessageDialog(rootPane, "Confirmado");
+            daoUsuario usuario = new daoUsuario();
+            BuscarUsuario a = new BuscarUsuario();
+            System.out.println(a.Buscar);
+            usuario.delete(a.getBuscar());
         }
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Ejecuta eliminar 
-         cifrar c = new cifrar();
-        
-        try {
-            buscarUsuario(usuario.getText(), c.cifrado(contrasena.getText()));
-            BuscarUsuario a = new BuscarUsuario();
-            a.setVisible(true);
-            this.setVisible(false);
-            
-            
-            
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(EliminarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String pass;
+        char[] arrayC = contrasena.getPassword();
+        pass = new String(arrayC);
+        cifrar c = new cifrar();
 
-        
-        
-        
+        try {
+            buscarUsuario(user.getText(), c.cifrado(pass));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Todo lo que podía salir mal salió mal");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Regresar
-        
-        
+
         Principal a = new Principal();
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioActionPerformed
+    }//GEN-LAST:event_userActionPerformed
 
     private void contrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaActionPerformed
         // TODO add your handling code here:
@@ -186,6 +183,6 @@ public class EliminarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField usuario;
+    private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

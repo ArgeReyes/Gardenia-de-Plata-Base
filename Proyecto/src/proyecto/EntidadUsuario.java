@@ -4,7 +4,6 @@ public class EntidadUsuario {
     int ID;
     String nombre;
     String contraseña;
-    boolean tipo;
 
     public EntidadUsuario(){
         System.out.println("Usuario creado");
@@ -43,14 +42,6 @@ public class EntidadUsuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-    }
-
-    public boolean isTipo() {
-        return tipo;
-    }
-
-    public void setTipo(boolean tipo) {
-        this.tipo = tipo;
     }
 
     @Override

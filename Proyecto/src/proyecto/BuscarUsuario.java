@@ -4,6 +4,7 @@
  */
 package proyecto;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -11,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ARGENTINA REYES
  */
 public class BuscarUsuario extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form BuscarUsuario
      */
@@ -19,10 +20,8 @@ public class BuscarUsuario extends javax.swing.JFrame {
         initComponents();
     }
 
-    
-    
     /**
-     
+     *
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -30,7 +29,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        user = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -55,17 +54,17 @@ public class BuscarUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                userActionPerformed(evt);
             }
         });
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        user.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+                userKeyReleased(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 240, -1));
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 240, -1));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,36 +89,31 @@ public class BuscarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_userActionPerformed
 
-        public void buscaruser(String buscar) {
+    public void buscaruser(String buscar) {
         daoUsuario u = new daoUsuario();
         DefaultTableModel modelo = u.buscarUsuario(buscar);
-   
+
     }
-    
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Eliminar Ejecutar primero buscar...
-        
-        
-        
-        
-        String Buscar = jTextField1.getText();
-        
-        
+
+        String Buscar = user.getText();
+
         EliminarUsuario a = new EliminarUsuario();
         a.setVisible(true);
         this.setVisible(false);
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Regresar principal
-        
+
         Principal a = new Principal();
         a.setVisible(true);
         this.setVisible(false);
@@ -127,14 +121,16 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Buscar
-        
-        String Buscar = jTextField1.getText();
-        
+        String Buscar = user.getText();
+        daoUsuario usuario = new daoUsuario();
+        if (Buscar.equals(usuario.read(Buscar).getNombre())) {
+            JOptionPane.showMessageDialog(null, "Se encontró el usuario");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+    private void userKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1KeyReleased
+    }//GEN-LAST:event_userKeyReleased
 
     /**
      * @param args the command line arguments
@@ -178,6 +174,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }
