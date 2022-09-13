@@ -10,7 +10,7 @@ public class Conexion {
     String bd = "gardenia";
     String url = "jdbc:mariadb://localhost:3306/" + bd;
     String user = "root";
-    String pass = "bbbbbbb7";
+    String pass = "marti";
 
     
     public  Connection conectar() throws SQLException {

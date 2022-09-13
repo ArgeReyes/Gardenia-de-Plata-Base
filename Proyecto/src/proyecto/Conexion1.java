@@ -18,10 +18,11 @@ public class Conexion1 {
         
         String url = "jdbc:mariadb://localhost:3306/gardenia";
         String user = "root";// el usuario que ustedes tienen
-        String pass = "bbbbbbb7";// la clave que uestedes tienen
+        String pass = "marti";// la clave que uestedes tienen
 
         con =  DriverManager.getConnection(url, user, pass);
         
         return con;
     }
+        
 }
