@@ -121,17 +121,20 @@ public class Ingreso extends javax.swing.JFrame {
 
         try {
             buscarUsuario(usuario.getText(), c.cifrado(pass));
+           // new Principal().setVisible(true);
+            this.setVisible(false);
+
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
-        if ("Admin".equals(usuario.getText()) && "12345".equals(pass)) {
+        //if ("Admin".equals(usuario.getText()) && "12345".equals(pass)) {
 
-            new Principal().setVisible(true);
-            this.setVisible(false);
+          //  new Principal().setVisible(true);
+          //  this.setVisible(false);
 
-        }
+        //}
 
 //        if("Admin".equals(usuario.getText()) &&  "12345".equals(pass)){
 //           
