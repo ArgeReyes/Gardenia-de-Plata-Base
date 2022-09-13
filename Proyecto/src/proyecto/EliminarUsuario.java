@@ -104,8 +104,8 @@ public class EliminarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Confirmado");
             daoUsuario usuario = new daoUsuario();
             BuscarUsuario a = new BuscarUsuario();
-            System.out.println(a.Buscar);
-            usuario.delete(a.getBuscar());
+//            System.out.println(a.Buscar);
+//            usuario.delete(a.getBuscar());
         }
     }
 

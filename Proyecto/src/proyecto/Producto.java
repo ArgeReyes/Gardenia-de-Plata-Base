@@ -89,5 +89,9 @@ public class Producto {
     public void setPeso(float peso) {
         this.peso = peso;
     }
+    
+    public void toString(Producto p) {
+        System.out.println("ID: " + p.getID());
+    }
 
 }

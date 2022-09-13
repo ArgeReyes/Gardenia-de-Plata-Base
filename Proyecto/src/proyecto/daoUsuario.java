@@ -58,7 +58,7 @@ public class daoUsuario {
     public boolean delete(String nombre) {
         try {
             String sql = "DELETE FROM usuario WHERE nombre = ?";
-            com.mysql.jdbc.PreparedStatement ps = (com.mysql.jdbc.PreparedStatement) c.conectar().prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
             ps.setString(1, nombre);
             ps.execute();
             ps.close();

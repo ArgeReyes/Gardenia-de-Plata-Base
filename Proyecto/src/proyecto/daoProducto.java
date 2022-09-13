@@ -1,11 +1,9 @@
 package proyecto;
 
-import com.mysql.jdbc.PreparedStatement;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class daoProducto {
 
@@ -94,7 +92,7 @@ public class daoProducto {
             ps.setFloat(7, p.getPeso());
             ps.setInt(8, p.getID());
 
-            ps.execute();
+            ps.executeUpdate();
             ps.close();
             ps = null;
             c.desconectar();

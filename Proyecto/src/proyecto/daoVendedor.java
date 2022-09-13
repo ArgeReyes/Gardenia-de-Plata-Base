@@ -1,6 +1,6 @@
 package proyecto;
 
-import com.mysql.jdbc.PreparedStatement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,7 +14,7 @@ public class daoVendedor {
     public boolean create(EntidadVendedor v){
         try {
             String sql = "INSERT INTO vendedor (ID, nombre, telefono) values (?,?,?)";
-            PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
+            PreparedStatement ps = c.conectar().prepareStatement(sql);
             ps.setInt(1, v.getID());
             ps.setString(2, v.getNombre());
             ps.setInt(3, v.getTelefono());
@@ -33,7 +33,7 @@ public class daoVendedor {
         EntidadVendedor u = new EntidadVendedor();
         try {
             String sql = "SELECT * FROM  vendedor WHERE nombre=?";
-            PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
+            PreparedStatement ps = c.conectar().prepareStatement(sql);
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
