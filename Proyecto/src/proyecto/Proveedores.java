@@ -104,7 +104,7 @@ public class Proveedores extends javax.swing.JFrame {
                 SalirSinConfirmarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SalirSinConfirmarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 130, 50));
+        getContentPane().add(SalirSinConfirmarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 140, 50));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Corinto.jpg"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 483, 330));

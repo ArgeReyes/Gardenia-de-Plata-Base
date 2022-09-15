@@ -141,7 +141,7 @@ public class IngresarPieza extends javax.swing.JFrame {
                 SalirSinConfirmarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SalirSinConfirmarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 130, 40));
+        getContentPane().add(SalirSinConfirmarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 140, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Corinto.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 360));
@@ -205,11 +205,15 @@ public class IngresarPieza extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirSinConfirmarButtonMouseClicked
 
     private void SalirSinConfirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirSinConfirmarButtonActionPerformed
-        dao.cancelar();
-
-        Principal a = new Principal();
-        a.setVisible(true);
-        this.setVisible(false);
+        try {
+            dao.cancelar();
+            
+            Inventario a = new Inventario();
+            a.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(IngresarPieza.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_SalirSinConfirmarButtonActionPerformed
 
     public void limpiarCampos() {
