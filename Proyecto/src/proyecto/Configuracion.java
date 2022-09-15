@@ -1,15 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package proyecto;
 
-/**
- *
- * @author ARGENTINA REYES
- */
-public class Configuracion extends javax.swing.JFrame {
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+public class Configuracion extends javax.swing.JFrame {
     /**
      * Creates new form Configuracion
      */
@@ -79,11 +74,15 @@ public class Configuracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Nuevo Usuario
-        
-        Usuario a = new Usuario();
-        a.setVisible(true);
-        this.setVisible(false);
+        try {
+            // Nuevo Usuario
+            
+            Usuario a = new Usuario();
+            a.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -97,11 +96,15 @@ public class Configuracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Buscar usuario
-        
-        BuscarUsuario a = new BuscarUsuario();
-        a.setVisible(true);
-        this.setVisible(false);
+        try {
+            // Buscar usuario
+            
+            BuscarUsuario a = new BuscarUsuario();
+            a.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

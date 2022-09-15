@@ -5,13 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class daoVendedor {
+
     Conexion c;
-    
-    public daoVendedor(){
+
+    public daoVendedor() throws SQLException {
         c = new Conexion();
     }
-    
-    public boolean create(EntidadVendedor v){
+
+    public boolean create(EntidadVendedor v) {
         try {
             String sql = "INSERT INTO vendedor (ID, nombre, telefono) values (?,?,?)";
             PreparedStatement ps = c.conectar().prepareStatement(sql);
@@ -21,15 +22,15 @@ public class daoVendedor {
             ps.execute();
             ps.close();
             ps = null;
-            c.desconectar();
+//            c.desconectar();
             return true;
         } catch (SQLException ex) {
             System.out.println("Ha ocurrido un error al crear el vendedor: " + ex);
             return false;
         }
     }
-    
-     public EntidadVendedor read(String nombre) {
+
+    public EntidadVendedor read(String nombre) {
         EntidadVendedor u = new EntidadVendedor();
         try {
             String sql = "SELECT * FROM  vendedor WHERE nombre=?";
@@ -40,14 +41,24 @@ public class daoVendedor {
                 u.setID(rs.getInt("ID"));
                 u.setNombre(rs.getString("nombre"));
                 u.setTelefono(rs.getInt("Telefono"));
-                
+
             }
             ps.close();
             ps = null;
-            c.desconectar();
+//            c.desconectar();
         } catch (SQLException ex) {
             System.out.println("Fallo en el método read producto: " + ex);
         }
         return u;
+    }
+
+    public void confirmar() {
+        c.commit();
+        c.desconectar();
+    }
+
+    public void cancelar() {
+        c.rollback();
+        c.desconectar();
     }
 }
