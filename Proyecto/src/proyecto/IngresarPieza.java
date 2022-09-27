@@ -9,6 +9,7 @@ public class IngresarPieza extends javax.swing.JFrame {
 
     daoProducto dao;
     EntidadProducto p;
+    String transacciones = "";
 
     /**
      * Creates new form IngresarPieza
@@ -169,6 +170,12 @@ public class IngresarPieza extends javax.swing.JFrame {
         try {
             dao.confirmar();
             
+            // Imprime las transacciones realizadas en consola
+//            System.out.println(transacciones);
+            Historial historia = new Historial();
+            historia.anexarHistorial("historial", transacciones);
+            System.out.println(historia.leerHistorial("historial"));
+            
             new Inventario().setVisible(true);
             this.setVisible(false);
         } catch (SQLException ex) {
@@ -184,6 +191,7 @@ public class IngresarPieza extends javax.swing.JFrame {
 
         p = new EntidadProducto(0, nombre, false, 0, material, null, costo, peso);
         if (dao.create(p)) {
+            transacciones += "PRODUCTO INSERTADO: " + "Nombre: " + nombre + ", Material: " + material + ", Costo: " + costo + ", Peso: " + peso + "\n";
             JOptionPane.showMessageDialog(this, "Se insertó el producto exitosamente");
         } else {
             JOptionPane.showMessageDialog(this, "No se insertó registro");
