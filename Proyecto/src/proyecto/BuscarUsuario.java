@@ -4,6 +4,9 @@
  */
 package proyecto;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,11 +15,14 @@ import javax.swing.table.DefaultTableModel;
  * @author ARGENTINA REYES
  */
 public class BuscarUsuario extends javax.swing.JFrame {
-    
+
+    daoUsuario dao;
+
     /**
      * Creates new form BuscarUsuario
      */
-    public BuscarUsuario() {
+    public BuscarUsuario() throws SQLException {
+        dao = new daoUsuario();
         initComponents();
     }
 
@@ -94,19 +100,22 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_userActionPerformed
 
     public void buscaruser(String buscar) {
-        daoUsuario u = new daoUsuario();
-        DefaultTableModel modelo = u.buscarUsuario(buscar);
+        DefaultTableModel modelo = dao.buscarUsuario(buscar);
 
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Eliminar Ejecutar primero buscar...
-
-        String Buscar = user.getText();
-
-        EliminarUsuario a = new EliminarUsuario();
-        a.setVisible(true);
-        this.setVisible(false);
+        try {
+            // Eliminar Ejecutar primero buscar...
+            
+            String Buscar = user.getText();
+            
+            EliminarUsuario a = new EliminarUsuario();
+            a.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -120,11 +129,15 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Buscar
-        String Buscar = user.getText();
-        daoUsuario usuario = new daoUsuario();
-        if (Buscar.equals(usuario.read(Buscar).getNombre())) {
-            JOptionPane.showMessageDialog(null, "Se encontró el usuario");
+        try {
+            // Buscar
+            String Buscar = user.getText();
+            daoUsuario usuario = new daoUsuario();
+            if (Buscar.equals(usuario.read(Buscar).getNombre())) {
+                JOptionPane.showMessageDialog(null, "Se encontró el usuario");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -162,7 +175,11 @@ public class BuscarUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarUsuario().setVisible(true);
+                try {
+                    new BuscarUsuario().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

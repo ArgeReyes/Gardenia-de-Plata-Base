@@ -12,14 +12,14 @@ public class daoVentas {
 
     Conexion c;
 
-    public daoVentas() {
+    public daoVentas() throws SQLException {
         c = new Conexion();
     }
 
     public boolean create(EntidadVenta u) {
         try {
-            String sql = "INSERT INTO venta (ID, precio, fecha, Descuento_ID, vendedor_ID, Usuario_id) values (?,?,?,?,?,?)";
-            PreparedStatement ps = (PreparedStatement) c.conectar().prepareStatement(sql);
+            String sql = "INSERT INTO venta (ID, precio, fecha, Descuento_ID, Vendedor_ID, Usuario_ID) values (?,?,?,?,?,?)";
+            PreparedStatement ps = c.conectar().prepareStatement(sql);
             ps.setInt(1, u.getID());
             ps.setFloat(2, u.getPrecio());
             ps.setDate(3, null);
@@ -29,11 +29,21 @@ public class daoVentas {
             ps.execute();
             ps.close();
             ps = null;
-            c.desconectar();
+//            c.desconectar();
             return true;
         } catch (SQLException ex) {
             System.out.println("Error al insertar la venta: " + ex);
             return false;
         }
+    }
+    
+    public void confirmar() {
+        c.commit();
+        c.desconectar();
+    }
+
+    public void cancelar() {
+        c.rollback();
+        c.desconectar();
     }
 }
