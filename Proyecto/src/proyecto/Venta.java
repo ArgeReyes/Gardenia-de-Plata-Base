@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class Venta extends javax.swing.JFrame {
 
+    String transacciones = "";
     daoVentas dao;
 
     /**
@@ -215,6 +216,7 @@ public class Venta extends javax.swing.JFrame {
 
         p = new EntidadVenta(0, precio, null, descuento, vendedorID, usuarioID);
         if (dao.create(p)) {
+            transacciones += "LOTE VENDIDO: " + "Total: " + precio + ", Descuento: " + descuento + ", ID del Vendedor: " + vendedorID + ", ID del Usuario: " + usuarioID + "\n";
             JOptionPane.showMessageDialog(this, "Se insertó la venta exitosamente");
         } else {
             JOptionPane.showMessageDialog(this, "No se insertó la venta");
@@ -243,6 +245,11 @@ public class Venta extends javax.swing.JFrame {
 
     private void SalirConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirConfirmarActionPerformed
         dao.confirmar();
+
+        Historial historia = new Historial();
+        historia.anexarHistorial("historial", transacciones);
+        System.out.println(historia.leerHistorial("historial"));
+
         Principal a = new Principal();
         a.setVisible(true);
         this.setVisible(false);
