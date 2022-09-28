@@ -21,7 +21,7 @@ public class Respaldos {
         try {
             Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia");
             InputStream is = p.getInputStream();
-            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/Respaldo/"+dateTime.toString()+"gardenia.sql";
+            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/RespaldoIncremental/"+dateTime.toString()+"gardenia.sql";
             FileOutputStream fos = new FileOutputStream(ruta);
             byte[] buffer = new byte[1000];
             int leido = is.read(buffer);
@@ -45,7 +45,7 @@ public class Respaldos {
         try {
             Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia");
             InputStream is = p.getInputStream();
-            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/Respaldo/"+dateTime.toString()+"Rgardenia.sql";
+            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/RespaldoCompleto/"+dateTime.toString()+"Rgardenia.sql";
             FileOutputStream fos = new FileOutputStream(ruta);
             byte[] buffer = new byte[1000];
             int leido = is.read(buffer);
@@ -67,7 +67,7 @@ public class Respaldos {
      try {
             Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia");
             OutputStream os= p.getOutputStream();
-            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/Respaldo/RBG.sql";
+            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/Restauracion/RBG.sql";
             FileInputStream fis = new FileInputStream(ruta);
             byte[] buffer = new byte[1000];
             int leido = fis.read(buffer);
