@@ -21,6 +21,7 @@ public class Conexion1 {
         String pass = "marti";// la clave que uestedes tienen
 
         con =  DriverManager.getConnection(url, user, pass);
+        con.setAutoCommit(false);
         
         return con;
     }

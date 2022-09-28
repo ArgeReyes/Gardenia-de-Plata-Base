@@ -1,14 +1,19 @@
 package proyecto;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Inventario extends javax.swing.JFrame {
-
+    daoProducto dao;
+    
     /**
      * Creates new form Inventario
      */
-    public Inventario() {
+    public Inventario() throws SQLException {
+        dao = new daoProducto();
         initComponents();
         mostrarClientes();
         this.setLocationRelativeTo(null);
@@ -25,16 +30,18 @@ public class Inventario extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        editarButton = new javax.swing.JButton();
+        eliminarButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         Buscar = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        RefrescarButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
@@ -53,33 +60,33 @@ public class Inventario extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, 30));
 
-        jButton2.setText("Editar pieza");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        editarButton.setText("Editar pieza");
+        editarButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                editarButtonMouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        getContentPane().add(editarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, 30));
 
-        jButton3.setText("Eliminar pieza");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        eliminarButton.setText("Eliminar pieza");
+        eliminarButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                eliminarButtonMouseClicked(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        eliminarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                eliminarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+        getContentPane().add(eliminarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, 30));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa (1).png"))); // NOI18N
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,7 +94,12 @@ public class Inventario extends javax.swing.JFrame {
                 jButton4MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, -1, -1));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
 
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,15 +111,7 @@ public class Inventario extends javax.swing.JFrame {
                 BuscarKeyReleased(evt);
             }
         });
-        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 140, -1));
-
-        jButton5.setText("Regresar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
+        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 140, 30));
 
         Tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,7 +129,7 @@ public class Inventario extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 160, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 160, -1, 410));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, -1));
@@ -133,15 +137,46 @@ public class Inventario extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tela 2 tipica.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 40, 270));
 
+        jButton6.setText("Guardar Cambios");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 200, 50));
+
+        jButton7.setText("Descartar Cambios");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 200, 50));
+
+        RefrescarButton.setText("Refrescar");
+        RefrescarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefrescarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RefrescarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, -1, 150));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Corinto.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 520));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void eliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarButtonActionPerformed
+        // Eliminar producto
+        int id = Integer.parseInt(Buscar.getText());
+        EntidadProducto p;
+        if (dao.delete(id)) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el producto exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se eliminó registro");
+        }
+    }//GEN-LAST:event_eliminarButtonActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
@@ -153,47 +188,32 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            new IngresarPieza().setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        new IngresarPieza().setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4MouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // Eliminar producto
-        int id = Integer.parseInt(Buscar.getText());
-        daoProducto dao;
-        EntidadProducto p;
-        dao = new daoProducto();
-        if (dao.delete(id)) {
-            JOptionPane.showMessageDialog(this, "Se eliminó el producto exitosamente");
-        } else {
-            JOptionPane.showMessageDialog(this, "No se eliminó registro");
-        }
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+    private void eliminarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarButtonMouseClicked
         
-         Principal a = new Principal();
-        a.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_eliminarButtonMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void editarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarButtonMouseClicked
         
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_editarButtonMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        daoProducto dao;
-        dao = new daoProducto();
-        new Principal().setVisible(true);
+    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
+//        new Principal().setVisible(true);
         int filaSeleccionada = Tabla1.getSelectedRow();
 
         int ID = Integer.parseInt(String.valueOf(Tabla1.getValueAt(filaSeleccionada, 0)));
@@ -212,7 +232,31 @@ public class Inventario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se insertó registro");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_editarButtonActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        dao.confirmar();
+        
+        Principal a = new Principal();
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        dao.cancelar();
+        
+        Principal a = new Principal();
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void RefrescarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefrescarButtonActionPerformed
+        Tabla1.setModel(dao.select());
+    }//GEN-LAST:event_RefrescarButtonActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,7 +288,11 @@ public class Inventario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inventario().setVisible(true);
+                try {
+                    new Inventario().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -266,12 +314,14 @@ public class Inventario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buscar;
+    private javax.swing.JButton RefrescarButton;
     private javax.swing.JTable Tabla1;
+    private javax.swing.JButton editarButton;
+    private javax.swing.JButton eliminarButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

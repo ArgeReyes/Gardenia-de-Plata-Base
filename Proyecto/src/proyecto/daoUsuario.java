@@ -12,7 +12,7 @@ public class daoUsuario {
 
     Conexion c;
 
-    public daoUsuario() {
+    public daoUsuario() throws SQLException {
         c = new Conexion();
     }
 
@@ -26,7 +26,7 @@ public class daoUsuario {
             ps.execute();
             ps.close();
             ps = null;
-            c.desconectar();
+//            c.desconectar();
             return true;
         } catch (SQLException ex) {
             System.out.println("Error al crear el usuario: " + ex);
@@ -48,7 +48,7 @@ public class daoUsuario {
             }
             ps.close();
             ps = null;
-            c.desconectar();
+//            c.desconectar();
         } catch (SQLException ex) {
             System.out.println("Fallo en el método read producto: " + ex);
         }
@@ -63,7 +63,7 @@ public class daoUsuario {
             ps.execute();
             ps.close();
             ps = null;
-            c.desconectar();
+//            c.desconectar();
             return true;
         } catch (SQLException ex) {
             System.out.println("Fallo al elimiar: " + ex);
@@ -72,40 +72,25 @@ public class daoUsuario {
     }
 
      public DefaultTableModel buscarUsuario(String buscar) {
-
         int contador = 1; // Dedicado para acomular en número de registros que hay en la tabla
-
         String[] nombresColumnas = {" # ", "nombre", "contraseña"};//Indica el nombre de las columnas en la tabla
-
         String[] registros = new String[3];
-
         DefaultTableModel modelo = new DefaultTableModel(null, nombresColumnas);
-
         String sql = "SELECT * FROM usuario WHERE ID LIKE '%" + buscar + "%' OR nombre LIKE '%" + buscar + "%'";
-
         Connection cn = null;
-
         PreparedStatement pst = null;
-
         ResultSet rs = null;
 
         try {
             cn = Conexion1.getConnection();
-
             pst = cn.prepareStatement(sql);
-
             rs = pst.executeQuery();
 
             while (rs.next()) {
                 registros[0] = rs.getString("ID");
-
                 registros[1] = rs.getString("Nombre");
-
-
                 modelo.addRow(registros);
-
                 contador++;
-
             }
         } catch (SQLException e) {
 
@@ -145,10 +130,20 @@ public class daoUsuario {
             }
             ps.close();
             ps = null;
-            c.desconectar();
+//            c.desconectar();
         } catch (SQLException ex) {
             System.out.println("Fallo en el método read: " + ex);
         }
         return lista;
+    }
+    
+    public void confirmar() {
+        c.commit();
+        c.desconectar();
+    }
+
+    public void cancelar() {
+        c.rollback();
+        c.desconectar();
     }
 }
