@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyecto;
+import java.io.File;
+import javax.swing.JFileChooser;
 import proyecto.Respaldos.*;
 /**
  *
@@ -103,7 +105,13 @@ public class backup extends javax.swing.JFrame{
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Respaldos nuevo = new Respaldos();
-        nuevo.Respaldo();
+        
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showOpenDialog(fileChooser);
+        File archivo = fileChooser.getSelectedFile();
+       
+        //System.out.println(archivo.getName());
+        nuevo.Respaldo(archivo.getName());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

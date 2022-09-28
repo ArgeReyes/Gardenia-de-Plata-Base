@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 
 public class Respaldos {
@@ -62,12 +63,12 @@ public class Respaldos {
          
     }
       
-     public void Respaldo(){
+     public void Respaldo(String nombre){
          
      try {
             Process p= Runtime.getRuntime().exec("mysql -u root -pmarti resgardenia");
             OutputStream os= p.getOutputStream();
-            FileInputStream fis = new FileInputStream("C:\\Users\\mugiw\\OneDrive\\Documentos\\GitHub\\Gardenia-de-Plata-Base\\RespaldoCompleto\\gardenia.sql");
+            FileInputStream fis = new FileInputStream("C:\\Users\\mugiw\\OneDrive\\Documentos\\GitHub\\Gardenia-de-Plata-Base\\RespaldoCompleto\\"+nombre);
             byte[] buffer = new byte[1000];
             int leido = fis.read(buffer);
             while(leido>0){
@@ -81,4 +82,6 @@ public class Respaldos {
             Logger.getLogger(Respaldos.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
+
+    
 }
