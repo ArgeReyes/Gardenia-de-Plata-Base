@@ -87,7 +87,7 @@ public class Registro_transacciones extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Actualizar panel
         Historial h = new Historial();
-        h.leerHistorial("historial");
+        jTextArea1.setText(h.leerHistorial("historial"));
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
