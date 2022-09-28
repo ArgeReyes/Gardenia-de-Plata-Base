@@ -39,7 +39,7 @@ public class Respaldos {
     }
      
       public void backup2(){
-         String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy, hh mm ss a").format(LocalDateTime.now());
+         String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy").format(LocalDateTime.now());
          
          
         try {
@@ -63,12 +63,11 @@ public class Respaldos {
     }
       
      public void Respaldo(){
-         String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy, hh mm ss a").format(LocalDateTime.now());
+         
      try {
-            Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia");
+            Process p= Runtime.getRuntime().exec("mysql -u root -pmarti resgardenia");
             OutputStream os= p.getOutputStream();
-            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/Restauracion/RBG.sql";
-            FileInputStream fis = new FileInputStream(ruta);
+            FileInputStream fis = new FileInputStream("C:\\Users\\mugiw\\OneDrive\\Documentos\\GitHub\\Gardenia-de-Plata-Base\\RespaldoCompleto\\gardenia.sql");
             byte[] buffer = new byte[1000];
             int leido = fis.read(buffer);
             while(leido>0){
