@@ -13,7 +13,7 @@ public class Conexion {
     String bd = "gardenia";
     String url = "jdbc:mariadb://localhost:3306/" + bd;
     String user = "root";
-    String pass = "marti";
+    String pass = "2010";
 
     public Conexion() throws SQLException {
         cx = DriverManager.getConnection(url, user, pass);
