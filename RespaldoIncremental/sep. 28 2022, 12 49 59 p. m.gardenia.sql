@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.8.3-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.6.8-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: gardenia
 -- ------------------------------------------------------
--- Server version	10.8.3-MariaDB
+-- Server version	10.6.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -44,26 +44,6 @@ LOCK TABLES `compra` WRITE;
 /*!40000 ALTER TABLE `compra` DISABLE KEYS */;
 /*!40000 ALTER TABLE `compra` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER AgregarCompra
-BEFORE INSERT ON compra
-FOR EACH ROW
-BEGIN
-    SET NEW.fecha = NOW();
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `detalle venta`
@@ -140,7 +120,7 @@ CREATE TABLE `producto` (
   `costo` float DEFAULT NULL,
   `peso` float DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,17 +129,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES
-(1,'Zafiro',0,0,'Carbon',NULL,0,0),
-(2,'RUBY',1,35,'Sus mentiras','2022-03-25',12,55),
-(3,'Zafiro Grigo',0,0,'Adamantium',NULL,50000,2500),
-(4,'Porfavorya',0,0,'Lagrimas',NULL,12,1000),
-(5,'Esfiro',0,0,'Piedra Caliza',NULL,4200,122),
-(6,'Ria',0,0,'Adm','2022-03-24',123,122),
-(11,'Rubí',0,0,'Finos Realces',NULL,2455,25),
-(13,'Brian Batz',0,0,'Obsidiana',NULL,5000,120),
-(14,'Nueva Prueba',0,0,'Diamantes',NULL,4500,126),
-(19,'Importe',0,0,'Impolium',NULL,45000,12);
+INSERT INTO `producto` VALUES (11,'Rubí',0,32,'Finos Realces','2022-03-13',2455,25),(35,'Atardecer de oro',0,45,'Oro','2022-03-12',2000,12),(37,'Open',0,0,'Oro',NULL,10000,23),(39,'Amaterasu',0,0,'Oro',NULL,10000,32),(41,'Comprobación',0,21,'Jade','2022-03-12',20000,22),(43,'A2',0,40,'Jade','2022-04-11',23333,21),(44,'B1',0,0,'Jade',NULL,2000,21),(46,'B2',0,7,'Fuego','2022-02-01',10000,21),(47,'Yuma',0,0,'Diamantes',NULL,21000,21),(48,'Yonka',0,0,'Diamantes',NULL,10000,3),(49,'C1',0,0,'Jade',NULL,50000,20),(50,'C2',0,0,'Oro',NULL,3000,12),(51,'C3',0,0,'Diamante',NULL,32000,100);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +146,7 @@ CREATE TABLE `proveedor` (
   `telefono` varchar(45) DEFAULT NULL,
   `consigna` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,8 +155,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES
-(1,'Cementos Progreso','455256',1);
+INSERT INTO `proveedor` VALUES (1,'Cementos Progreso','455256',1),(5,' Center Fundation','23344345',1),(7,'A2','21345654',1),(8,'B1','34543455',0),(9,' B2','45534323',0),(10,'Ornamentas','34543454',0),(11,'Ingrid','23234454',0),(12,'Argentina','45091233',1),(13,'Luisito','45678909',1);
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,10 +168,10 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
+  `nombre` varchar(45) NOT NULL,
   `contraseña` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,11 +180,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES
-(1,'Admin','827ccb0eea8a706c4c34a16891f84e7b'),
-(2,'Worbencho','827ccb0eea8a706c4c34a16891f84e7b'),
-(3,'El pistolas','a4757d7419ff3b48e92e90596f0e7548'),
-(4,'Iván','572d4e421e5e6b9bc11d815e8a027112');
+INSERT INTO `usuario` VALUES (1,'Admin','827ccb0eea8a706c4c34a16891f84e7b'),(2,'Worbencho','827ccb0eea8a706c4c34a16891f84e7b'),(3,'El pistolas','a4757d7419ff3b48e92e90596f0e7548'),(4,'Iván','572d4e421e5e6b9bc11d815e8a027112'),(6,'Jairo','827ccb0eea8a706c4c34a16891f84e7b');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +196,7 @@ CREATE TABLE `vendedor` (
   `nombre` varchar(60) DEFAULT NULL,
   `telefono` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,10 +205,7 @@ CREATE TABLE `vendedor` (
 
 LOCK TABLES `vendedor` WRITE;
 /*!40000 ALTER TABLE `vendedor` DISABLE KEYS */;
-INSERT INTO `vendedor` VALUES
-(12,'Juan Perez','15253665'),
-(13,'Amarilis','45256552'),
-(14,'Marti','55555555');
+INSERT INTO `vendedor` VALUES (12,'Juan Perez','15253665'),(13,'Amarilis','45256552'),(14,'Marti','55555555'),(15,'Omar','23434554'),(16,' Alejandro','34543212'),(17,'Ingrid','23434344');
 /*!40000 ALTER TABLE `vendedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +228,7 @@ CREATE TABLE `venta` (
   KEY `fk_Venta_Usuario1_idx` (`Usuario_ID`),
   CONSTRAINT `fk_Venta_Usuario1` FOREIGN KEY (`Usuario_ID`) REFERENCES `usuario` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Venta_Vendedor1` FOREIGN KEY (`Vendedor_ID`) REFERENCES `vendedor` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,9 +237,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
-INSERT INTO `venta` VALUES
-(1,5000,NULL,20,13,2),
-(2,50000,'2022-05-06',50,13,4);
+INSERT INTO `venta` VALUES (1,5000,NULL,20,13,2),(2,50000,'2022-05-06',50,13,4),(5,5000,'2022-09-14',5,12,1),(13,5000,'2022-09-14',5,12,1),(18,1000,'2022-09-14',5,13,1),(20,30000,'2022-09-14',5,13,3),(21,20000,'2022-09-14',5,13,3),(22,20000,'2022-09-14',5,13,3);
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -310,4 +270,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-27 19:09:09
+-- Dump completed on 2022-09-28 12:49:59

@@ -20,9 +20,9 @@ public class Respaldos {
          
          
         try {
-            Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia");
+            Process p= Runtime.getRuntime().exec("mysqldump -u loot -pbbbbbbb7 gardenia");
             InputStream is = p.getInputStream();
-            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/RespaldoIncremental/"+dateTime.toString()+"gardenia.sql";
+            String ruta ="C:/Users/brian/Documents/NetBeansProjects/Gardenia-de-Plata-Base/RespaldoIncremental/"+dateTime.toString()+"gardenia.sql";
             FileOutputStream fos = new FileOutputStream(ruta);
             byte[] buffer = new byte[1000];
             int leido = is.read(buffer);
@@ -44,9 +44,9 @@ public class Respaldos {
          
          
         try {
-            Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia");
+            Process p= Runtime.getRuntime().exec("mysqldump -u loot -pbbbbbbb7 gardenia");
             InputStream is = p.getInputStream();
-            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/RespaldoCompleto/"+dateTime.toString()+"Rgardenia.sql";
+            String ruta ="C:/Users/brian/Documents/NetBeansProjects/Gardenia-de-Plata-Base/RespaldoCompleto/"+dateTime.toString()+"Rgardenia.sql";
             FileOutputStream fos = new FileOutputStream(ruta);
             byte[] buffer = new byte[1000];
             int leido = is.read(buffer);
@@ -63,12 +63,13 @@ public class Respaldos {
          
     }
       
-     public void Respaldo(String nombre){
+     public void Respaldo(String path){
          
      try {
-            Process p= Runtime.getRuntime().exec("mysql -u root -pmarti resgardenia");
+            Process p= Runtime.getRuntime().exec("mysql -u loot -pbbbbbbb7 gardenia");
             OutputStream os= p.getOutputStream();
-            FileInputStream fis = new FileInputStream("C:\\Users\\mugiw\\OneDrive\\Documentos\\GitHub\\Gardenia-de-Plata-Base\\RespaldoCompleto\\"+nombre);
+            System.out.println(path);
+            FileInputStream fis = new FileInputStream(path);
             byte[] buffer = new byte[1000];
             int leido = fis.read(buffer);
             while(leido>0){
