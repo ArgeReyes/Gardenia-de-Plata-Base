@@ -14,15 +14,15 @@ import javax.swing.JFileChooser;
 
 
 public class Respaldos {
-     
+     //RESPALDO INCREMENTAL
      public void backup1(){
          String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy, hh mm ss a").format(LocalDateTime.now());
          
          
         try {
-            Process p= Runtime.getRuntime().exec("mysqldump -u loot -pbbbbbbb7 gardenia -R");
+            Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia -R");
             InputStream is = p.getInputStream();
-            String ruta ="C:/Users/brian/Documents/NetBeansProjects/Gardenia-de-Plata-Base/RespaldoIncremental/"+dateTime.toString()+"gardenia.sql";
+            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/RespaldoIncremental/"+dateTime.toString()+"gardenia.sql";
             FileOutputStream fos = new FileOutputStream(ruta);
             byte[] buffer = new byte[1000];
             int leido = is.read(buffer);
@@ -38,15 +38,15 @@ public class Respaldos {
              
          
     }
-     
+    //RESPALDO COMPLETO 
       public void backup2(){
          String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy").format(LocalDateTime.now());
          
          
         try {
-            Process p= Runtime.getRuntime().exec("mysqldump -u loot -pbbbbbbb7 gardenia");
+            Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia -R");
             InputStream is = p.getInputStream();
-            String ruta ="C:/Users/brian/Documents/NetBeansProjects/Gardenia-de-Plata-Base/RespaldoCompleto/"+dateTime.toString()+"Rgardenia.sql";
+            String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/RespaldoCompleto/"+dateTime.toString()+"gardenia.sql";
             FileOutputStream fos = new FileOutputStream(ruta);
             byte[] buffer = new byte[1000];
             int leido = is.read(buffer);
@@ -66,7 +66,7 @@ public class Respaldos {
      public void Respaldo(String path){
          
      try {
-            Process p= Runtime.getRuntime().exec("mysql -u loot -pbbbbbbb7 gardenia");
+            Process p= Runtime.getRuntime().exec("mysql -u root -pmarti gardenia");
             OutputStream os= p.getOutputStream();
             System.out.println(path);
             FileInputStream fis = new FileInputStream(path);
