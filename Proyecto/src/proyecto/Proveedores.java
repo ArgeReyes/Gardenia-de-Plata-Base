@@ -160,8 +160,8 @@ public class Proveedores extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         dao.confirmar();
 
-        Principal a = new Principal();
-        a.setVisible(true);
+        Principal b = new Principal();
+        b.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -172,8 +172,8 @@ public class Proveedores extends javax.swing.JFrame {
     private void SalirSinConfirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirSinConfirmarButtonActionPerformed
         dao.cancelar();
 
-        Principal a = new Principal();
-        a.setVisible(true);
+        Principal c = new Principal();
+        c.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_SalirSinConfirmarButtonActionPerformed
 

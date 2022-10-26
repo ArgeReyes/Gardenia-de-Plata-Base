@@ -20,7 +20,7 @@ public class Respaldos {
          
          
         try {
-            Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia");
+            Process p= Runtime.getRuntime().exec("mysqldump -u loot -pbbbbbbb7 gardenia -R");
             InputStream is = p.getInputStream();
             String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/RespaldoIncremental/"+dateTime.toString()+"gardenia.sql";
             FileOutputStream fos = new FileOutputStream(ruta);
@@ -44,7 +44,7 @@ public class Respaldos {
          
          
         try {
-            Process p= Runtime.getRuntime().exec("mysqldump -u root -pmarti gardenia");
+            Process p= Runtime.getRuntime().exec("mysqldump -u loot -pbbbbbbb7 gardenia -R");
             InputStream is = p.getInputStream();
             String ruta ="C:/Users/mugiw/OneDrive/Documentos/GitHub/Gardenia-de-Plata-Base/RespaldoCompleto/"+dateTime.toString()+"Rgardenia.sql";
             FileOutputStream fos = new FileOutputStream(ruta);

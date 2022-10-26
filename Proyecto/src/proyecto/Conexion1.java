@@ -16,9 +16,9 @@ public class Conexion1 {
     {
         Connection con = null;
         
-        String url = "jdbc:mariadb://localhost:3306/gardenia";
-        String user = "root";// el usuario que ustedes tienen
-        String pass = "2010";// la clave que uestedes tienen
+        String url = "jdbc:mariadb://bed:3306/gardenia";
+        String user = "loot";// el usuario que ustedes tienen
+        String pass = "bbbbbbb7";// la clave que uestedes tienen
 
         con =  DriverManager.getConnection(url, user, pass);
         con.setAutoCommit(false);
