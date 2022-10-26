@@ -11,9 +11,9 @@ public class Conexion {
     Connection cx;
     
     String bd = "gardenia";
-    String url = "jdbc:mariadb://bed:3306/" + bd;
-    String user = "loot";
-    String pass = "bbbbbbb7";
+    String url = "jdbc:mariadb://localhost3306/" + bd;
+    String user = "root";
+    String pass = "marti";
 
     public Conexion() throws SQLException {
         cx = DriverManager.getConnection(url, user, pass);

@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package proyecto;
 import java.io.File;
 import javax.swing.JFileChooser;
-import proyecto.Respaldos.*;
-/**
- *
- * @author ARGENTINA REYES
- */
+
 public class backup extends javax.swing.JFrame{
 
     /**
@@ -111,7 +103,8 @@ public class backup extends javax.swing.JFrame{
         File archivo = fileChooser.getSelectedFile();
        
         //System.out.println(archivo.getName());
-        nuevo.Respaldo(archivo.getName());
+        System.out.println(archivo.getAbsolutePath());
+        nuevo.Respaldo(archivo.getAbsolutePath());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
